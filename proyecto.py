@@ -45,7 +45,7 @@ user.pack(side=tk.TOP, anchor="c",  pady=10)
 #PASSWORD
 password = tk.Frame(login)
     
-label3 = tk.Label(password, text="Usuario:", bg="green", fg="black")
+label3 = tk.Label(password, text="Contraseña", bg="green", fg="black")
 label3.config(font=("Courier", 12))
 label3.pack(side=tk.LEFT)
 
