@@ -23,18 +23,18 @@ from random import randint
 login = tk.Tk()
 login.title("ESPLORIFY")
 login.geometry('800x600')
-login.configure(background="green")
+login.configure(background="LightGreen")
 
 #TITULO
-label1 = tk.Label(login, text="Esplorify", bg="green", fg="black")
-label1.config(font=("Courier", 44), pady=40)
+label1 = tk.Label(login, text="Esplorify", bg="LightGreen", fg="black")
+label1.config(font=("Century", 44), pady=40)
 label1.pack()
 
 
 #Usuario
 user = tk.Frame(login)
     
-label2 = tk.Label(user, text="Usuario:", bg="green", fg="black")
+label2 = tk.Label(user, text="Usuario:", bg="LightGreen", fg="black")
 label2.config(font=("Courier", 12))
 label2.pack(side=tk.LEFT)
 
@@ -45,7 +45,7 @@ user.pack(side=tk.TOP, anchor="c",  pady=10)
 #PASSWORD
 password = tk.Frame(login)
     
-label3 = tk.Label(password, text="Contraseña", bg="green", fg="black")
+label3 = tk.Label(password, text="Contraseña", bg="LightGreen", fg="black")
 label3.config(font=("Courier", 12))
 label3.pack(side=tk.LEFT)
 
