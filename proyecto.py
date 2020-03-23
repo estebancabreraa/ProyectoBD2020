@@ -5,7 +5,7 @@
 
 #INTEGRANTES:
 #Esteban Cabrera - 17781
-#Andrea Elias - 17046
+#Andrea Elias - 17048
 #Kevin Macario - 17163
 
 import tkinter as tk
