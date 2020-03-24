@@ -5,6 +5,8 @@ from psycopg2 import Error
 from random import randint
 
 from proyecto import *
+from regArtista import *
+from regAlbum import *
 
 ################################################################################
 #                                    MENU                                      #
@@ -22,11 +24,11 @@ def ventanaMenu():
     labelMenu.pack()
 
     #Buttons
-    regArtista = tk.Button(menu, text="Registrar Artista")#, command=mostrarVentanaClientes)
+    regArtista = tk.Button(menu, text="Registrar Artista", command=ventanaRegArtista)
     regArtista.config(font=("Courier", 20))
     regArtista.pack(pady=10, ipadx=8)
 
-    regAlbum = tk.Button(menu, text="Registrar Album")#, command=mostrarVentanaProductos)
+    regAlbum = tk.Button(menu, text="Registrar Album", command=ventanaRegAlbum)
     regAlbum.config(font=("Courier", 20))
     regAlbum.pack(pady=10)
 
