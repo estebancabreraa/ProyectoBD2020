@@ -10,7 +10,7 @@ from ReporteriaQueries import *
 
 
 
-def Reporteria():
+def ventanaReporteria():
 
     reporteria = tk.Tk()
     reporteria.title("Reporteria")
