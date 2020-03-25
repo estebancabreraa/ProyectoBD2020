@@ -211,7 +211,7 @@ def Signup():
     #CustumerId
 
     usuarioId = tk.Frame(signup, bg="cyan")
-    label17 = tk.Label(usuarioId, text="Contraseña: ", font=("Courier", 15), bg="cyan", fg="black")
+    label17 = tk.Label(usuarioId, text="usuarioId: ", font=("Courier", 15), bg="cyan", fg="black")
     label17.pack(side=tk.LEFT)
 
     entry17 = Entry(usuarioId)
