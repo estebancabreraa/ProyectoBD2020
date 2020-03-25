@@ -83,6 +83,48 @@ def buscarArtista(nombre):
 
     return resultado
 
+def buscarAlbum(nombre):
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto1")
+        cursor = connection.cursor()
+        
+        create_table_query = '''SELECT * FROM album WHERE title=%s;'''
+        
+        cursor.execute(create_table_query, (nombre,))
+
+        result = cursor.fetchall()
+
+        albumid = ""
+        title = ""
+        artistid = ""
+        
+        for row in result:
+            albumid = row[0]
+            title = row[1]
+            artistid = row[2]
+            
+        resultado = [albumid, title, artistid]
+        connection.commit()
+        
+        mensaje = "Se encontro el album exitosamente."
+        print(resultado)
+        
+        messagebox.showinfo(message=mensaje, title="Consulta")
+    except (Exception, psycopg2.DatabaseError) as error :
+        messagebox.showerror(message="No se encontro el album.", title="Consulta fallida")
+        print (error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+
+    return albumid
 
 def buscarAlbumID(idd):
     try:
@@ -605,12 +647,12 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
         
         connection.commit()
         
-        mensaje = "Se registro el artista exitosamente."
+        mensaje = "Se registro la cancion exitosamente."
         print(mensaje)
         
         messagebox.showinfo(message=mensaje, title="Consulta")
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="No se pudo registrar el artista.", title="Consulta fallida")
+        messagebox.showerror(message="No se pudo registrar la cancion.", title="Consulta fallida")
         print ("No se pudo registrar artista.", error)
     finally:
         #closing database connection.
