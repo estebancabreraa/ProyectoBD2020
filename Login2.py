@@ -46,7 +46,6 @@ def Login():
             if(connection):
                 cursor.close()
                 connection.close()
-                messagebox.showerror(message="Email o contraseña erronea", title="Consulta fallida")
                 print("PostgreSQL connection is closed")
     
       
@@ -264,11 +263,7 @@ def Signup():
 ######
 
 gui = tk.Tk()
-<<<<<<< Updated upstream
 gui.title("EXPLORIFY")
-=======
-gui.title("ESPLORIFY")
->>>>>>> Stashed changes
 gui.geometry("800x600")
 gui.configure(background = "LightGreen")
 
@@ -291,8 +286,4 @@ button1.pack(pady=10, ipadx=5)
 button2 = tk.Button(gui, text="Sing Up", font=("Courier", 15), command=Signup)
 button2.pack(pady=10)
 
-<<<<<<< Updated upstream
 gui.mainloop()
-=======
-gui.mainloop()
->>>>>>> Stashed changes
