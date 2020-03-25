@@ -9,6 +9,8 @@ from regAlbum import *
 from regCancion import *
 from inactivar import *
 from buscar import *
+from menuAdmin import *
+from reporteria import *
 
 ################################################################################
 #                                    MENU                                      #
@@ -45,5 +47,9 @@ def ventanaMenu():
     buscar = tk.Button(menu, text="Buscar", command=ventanaBuscar)
     buscar.config(font=("Courier", 20))
     buscar.pack(pady=10, ipadx=8)
+
+    reporteria = tk.Button(menu, text="Reporteria", command=Reporteria)
+    reporteria.config(font=("Courier", 20))
+    reporteria.pack(pady=10)
 
    
