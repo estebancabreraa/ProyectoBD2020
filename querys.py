@@ -243,7 +243,7 @@ def buscarGeneroID(idd):
 
         result = cursor.fetchall()
 
-        idGenero = ""
+        idGenero = 0
         nombre = ""
         
         for row in result:
@@ -281,7 +281,7 @@ def buscarGenero(nombre):
 
         result = cursor.fetchall()
 
-        idGenero = ""
+        idGenero = 0
         nombre = ""
         
         for row in result:
