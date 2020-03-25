@@ -208,7 +208,8 @@ def buscarCancion(nombre):
             unitprice = row[8]
             estado = row[9]
             colaborador = row[10]
-            
+
+        resultado = [trackid, name, albumid, mediatypeid, genreid, composer, miliseconds, bytess, unitprice, estado, colaborador]
         
         connection.commit()
 
