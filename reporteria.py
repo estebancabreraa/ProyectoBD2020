@@ -97,4 +97,4 @@ def ventanaReporteria():
 
     reporteria.mainloop()
 
-Reporteria()
+ventanaReporteria()
