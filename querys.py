@@ -694,6 +694,8 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
     except (Exception, psycopg2.DatabaseError) as error :
         messagebox.showerror(message="No se pudo registrar la cancion.", title="Consulta fallida")
         print ("No se pudo registrar la cancion.", error)
+        print( "genero", idGenero)
+        print( "album", idAlbum)
     finally:
         #closing database connection.
             if(connection):
