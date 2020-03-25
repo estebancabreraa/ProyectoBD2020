@@ -8,6 +8,7 @@ from proyecto import *
 from regArtista import *
 from regAlbum import *
 from regCancion import *
+from inactivar import *
 ################################################################################
 #                                    MENU                                      #
 ################################################################################
@@ -36,7 +37,7 @@ def ventanaMenu():
     regCancion.config(font=("Courier", 20))
     regCancion.pack(pady=10)
 
-    inactivar = tk.Button(menu, text="Inactivar Cancion")#, command=mostrarVentanaProductos)
+    inactivar = tk.Button(menu, text="Inactivar Cancion", command=ventanaInactivarCancion)
     inactivar.config(font=("Courier", 20))
     inactivar.pack(pady=10)
 
