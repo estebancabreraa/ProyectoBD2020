@@ -48,7 +48,7 @@ def ventanaMenu():
     buscar.config(font=("Courier", 20))
     buscar.pack(pady=10, ipadx=8)
 
-    reporteria = tk.Button(menu, text="Reporteria", command=Reporteria)
+    reporteria = tk.Button(menu, text="Reporteria", command=ventanaReporteria)
     reporteria.config(font=("Courier", 20))
     reporteria.pack(pady=10)
 
