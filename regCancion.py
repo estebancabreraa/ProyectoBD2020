@@ -76,21 +76,53 @@ def ventanaRegCancion():
     generoo.config(font=("Courier", 12))
     generoo.pack(side=tk.LEFT)
 
-    generoCB = tk.Text(generoFrame, width=30, height=1)
-    generoCB.pack(side=tk.LEFT)
+    generoEdit = tk.Text(generoFrame, width=30, height=1)
+    generoEdit.pack(side=tk.LEFT)
 
     generoFrame.pack(side=tk.TOP, anchor=tk.NW)
+
+    #Duracion:
+    duracionFrame = tk.Frame(registroCancion)
+    
+    duracionn = tk.Label(duracionFrame, text="Duracion (milisegundos):", bg="LightGreen", fg="black")
+    duracionn.config(font=("Courier", 12))
+    duracionn.pack(side=tk.LEFT)
+
+    duracionEdit = tk.Text(duracionFrame, width=30, height=1)
+    duracionEdit.pack(side=tk.LEFT)
+
+    duracionFrame.pack(side=tk.TOP, anchor=tk.NW)
+
+    #Precio:
+    precioFrame = tk.Frame(registroCancion)
+    
+    precioo = tk.Label(precioFrame, text="Precio unitario):", bg="LightGreen", fg="black")
+    precioo.config(font=("Courier", 12))
+    precioo.pack(side=tk.LEFT)
+
+    precioEdit = tk.Text(precioFrame, width=30, height=1)
+    precioEdit.pack(side=tk.LEFT)
+
+    precioFrame.pack(side=tk.TOP, anchor=tk.NW)
 
     #e.bind("<Tab>", focus_next_widget)
     def borrarCampos3():
         idEdit.delete('1.0', 'end-1c')
         tituloEdit.delete('1.0', 'end-1c')
+        tituloAlbumEdit.delete('1.0', 'end-1c')
         artistaEdit.delete('1.0', 'end-1c')
+        generoEdit.delete('1.0', 'end-1c')
+        duracionEdit.delete('1.0', 'end-1c')
+        precioEdit.delete('1.0', 'end-1c')
         
     def registrarCancion():
-        idAlbum = idEdit.get("1.0",'end-1c')
+        idCancion = idEdit.get("1.0",'end-1c')
         titulo = tituloEdit.get("1.0",'end-1c')
+        tituloAlbum = tituloAlbumEdit.get("1.0",'end-1c')
         artista = artistaEdit.get("1.0",'end-1c')
+        genero = generoEdit.get("1.0",'end-1c')
+        duracion = duracionEdit.get("1.0",'end-1c')
+        precio = precioEdit.get("1.0",'end-1c')
 
         #LLAMAR A FUNCION AQUI
         
