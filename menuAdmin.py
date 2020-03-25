@@ -7,7 +7,7 @@ from random import randint
 from proyecto import *
 from regArtista import *
 from regAlbum import *
-
+from regCancion import *
 ################################################################################
 #                                    MENU                                      #
 ################################################################################
@@ -32,7 +32,7 @@ def ventanaMenu():
     regAlbum.config(font=("Courier", 20))
     regAlbum.pack(pady=10)
 
-    regCancion = tk.Button(menu, text="Registrar Cancion")#, command=mostrarVentanaProductos)
+    regCancion = tk.Button(menu, text="Registrar Cancion", command=ventanaRegCancion)
     regCancion.config(font=("Courier", 20))
     regCancion.pack(pady=10)
 

@@ -8,16 +8,16 @@ from proyecto import *
 
 def ventanaRegAlbum():
     registroAlbum = tk.Tk()
-    registroAlbum.title("Registrar artista")
+    registroAlbum.title("Registrar albumes")
     registroAlbum.geometry("800x600")
     registroAlbum.configure(background="LightGreen")
 
     #LABELS
-    label3 = tk.Label(registroAlbum, text="ARTISTAS", bg="LightGreen", fg="black")
+    label3 = tk.Label(registroAlbum, text="ALBUMES", bg="LightGreen", fg="black")
     label3.config(font=("Courier", 44), pady=40)
     label3.pack()
 
-    label4 = tk.Label(registroAlbum, text="REGISTRAR NUEVO ARTISTA", bg="LightGreen", fg="black")
+    label4 = tk.Label(registroAlbum, text="REGISTRAR NUEVO ALBUM", bg="LightGreen", fg="black")
     label4.config(font=("Courier", 24))
     label4.pack(side=tk.TOP, anchor=tk.NW)
 
