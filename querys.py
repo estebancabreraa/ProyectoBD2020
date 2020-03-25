@@ -45,7 +45,7 @@ def buscarArtista(nombre):
 
     return resultado
 
-def buscarAlbum(nombre):
+def buscarArtista(nombre):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -54,9 +54,48 @@ def buscarAlbum(nombre):
                                       database = "proyecto1")
         cursor = connection.cursor()
         
-        create_table_query = '''SELECT * FROM album WHERE title=%s;'''
+        create_table_query = '''SELECT * FROM artist WHERE name=%s;'''
         
         cursor.execute(create_table_query, (nombre,))
+
+        result = cursor.fetchall()
+
+        idArtista = ""
+        nombre = ""
+        
+        for row in result:
+            idArtista = row[0]
+            nombre = row[1]
+            
+        resultado = [idArtista, nombre]
+        
+        connection.commit()
+        
+    except (Exception, psycopg2.DatabaseError) as error :
+        messagebox.showerror(message="No se encontro el artista.", title="Consulta fallida")
+        print (error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+
+    return resultado
+
+
+def buscarAlbumID(idd):
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto1")
+        cursor = connection.cursor()
+        
+        create_table_query = '''SELECT * FROM album WHERE albumid=%s;'''
+        
+        cursor.execute(create_table_query, (idd,))
 
         result = cursor.fetchall()
 
@@ -86,7 +125,7 @@ def buscarAlbum(nombre):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-    return resultado
+    return title
 
 def buscarCancion(nombre):
     try:
@@ -146,6 +185,44 @@ def buscarCancion(nombre):
                 print("PostgreSQL connection is closed")
 
     return result
+
+def buscarGeneroID(idd):
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto1")
+        cursor = connection.cursor()
+        
+        create_table_query = '''SELECT * FROM genre WHERE genreid=%s;'''
+        
+        cursor.execute(create_table_query, (idd,))
+
+        result = cursor.fetchall()
+
+        idArtista = ""
+        nombre = ""
+        
+        for row in result:
+            idGenero = row[0]
+            nombre = row[1]
+            
+        resultado = [idArtista, nombre]
+        
+        connection.commit()
+        
+    except (Exception, psycopg2.DatabaseError) as error :
+        messagebox.showerror(message="No se encontro el artista.", title="Consulta fallida")
+        print (error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+
+    return nombre
 
 ################################################################################
 #                                     MODIFICAR                                #

@@ -5,8 +5,25 @@ from psycopg2 import Error
 from random import randint
 
 from proyecto import *
+from querys import *
 
 def ventanaModCancion(tituloCancion):
+    bCancion = buscarCancion(tituloCancion)
+    idCancion = bCancion[0]
+    titulo = bCancion[1]
+    albumid = bCancion[2]
+    mediatype = bCancion[3]
+    genreid = bCancion[4]
+    composer = bCancion[5]
+    milliseconds = bCancion[6]
+    bytess = bCancion[7]
+    unitprice = bCancion[8]
+    estado = bCancion[9]
+    colaborador = bCancion[10]
+
+    genero = buscarGeneroID(genreid)
+    tituloAlbum = buscarAlbumID(albumid)
+    
     registroCancion = tk.Tk()
     registroCancion.title("Registrar canciones")
     registroCancion.geometry("800x600")
@@ -31,6 +48,8 @@ def ventanaModCancion(tituloCancion):
     idEdit = tk.Text(idCancionFrame, width=30, height=1)
     idEdit.pack(side=tk.LEFT)
 
+    idEdit.insert(1.0, idCancion)
+
     idCancionFrame.pack(side=tk.TOP, anchor=tk.NW)
 
     #TITULO CANCION
@@ -42,6 +61,8 @@ def ventanaModCancion(tituloCancion):
 
     tituloEdit = tk.Text(tituloCancionFrame, width=30, height=1)
     tituloEdit.pack(side=tk.LEFT)
+
+    tituloEdit.insert(1.0, titulo)
 
     tituloCancionFrame.pack(side=tk.TOP, anchor=tk.NW)
 
@@ -55,7 +76,7 @@ def ventanaModCancion(tituloCancion):
     tituloAlbumEdit = tk.Text(tituloAlbumFrame, width=30, height=1)
     tituloAlbumEdit.pack(side=tk.LEFT)
 
-    tituloEdit.insert(1.0, tituloCancion)
+    tituloAlbumEdit.insert(1.0, tituloAlbum)
 
     tituloAlbumFrame.pack(side=tk.TOP, anchor=tk.NW)
     
@@ -69,6 +90,8 @@ def ventanaModCancion(tituloCancion):
     artistaEdit = tk.Text(artistaFrame, width=30, height=1)
     artistaEdit.pack(side=tk.LEFT)
 
+    artistaEdit.insert(1.0, composer)
+
     artistaFrame.pack(side=tk.TOP, anchor=tk.NW)
 
     #Genero:
@@ -80,6 +103,8 @@ def ventanaModCancion(tituloCancion):
 
     generoEdit = tk.Text(generoFrame, width=30, height=1)
     generoEdit.pack(side=tk.LEFT)
+
+    generoEdit.insert(1.0, genero)
 
     generoFrame.pack(side=tk.TOP, anchor=tk.NW)
 
@@ -93,6 +118,8 @@ def ventanaModCancion(tituloCancion):
     duracionEdit = tk.Text(duracionFrame, width=30, height=1)
     duracionEdit.pack(side=tk.LEFT)
 
+    duracionEdit.insert(1.0, milliseconds)
+
     duracionFrame.pack(side=tk.TOP, anchor=tk.NW)
 
     #Precio:
@@ -105,11 +132,13 @@ def ventanaModCancion(tituloCancion):
     precioEdit = tk.Text(precioFrame, width=30, height=1)
     precioEdit.pack(side=tk.LEFT)
 
+    precioEdit.insert(1.0, unitprice)
+
     precioFrame.pack(side=tk.TOP, anchor=tk.NW)
 
     #e.bind("<Tab>", focus_next_widget)
 
-    def modificarCancion():
+    def modificarCancion1():
         idCancion = idEdit.get("1.0",'end-1c')
         titulo = tituloEdit.get("1.0",'end-1c')
         tituloAlbum = tituloAlbumEdit.get("1.0",'end-1c')
@@ -118,18 +147,20 @@ def ventanaModCancion(tituloCancion):
         duracion = duracionEdit.get("1.0",'end-1c')
         precio = precioEdit.get("1.0",'end-1c')
         
+        modificarCancion(idCancion, titulo, precio)
+        
     c=""
-    def eliminarCancion():
+    def eliminarCancion1():
          c = "1"
 
     #BOTONES
     registrarborrarFrame = tk.Frame(registroCancion, bg="LightGreen")
     
-    button1 = tk.Button(registrarborrarFrame, text="REGISTRAR", bg="green", command=modificarCancion)
+    button1 = tk.Button(registrarborrarFrame, text="REGISTRAR", bg="green", command=modificarCancion1)
     button1.config(font=("Courier", 20))
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
 
-    button2 = tk.Button(registrarborrarFrame, text="BORRAR", bg="red", command=eliminarCancion)
+    button2 = tk.Button(registrarborrarFrame, text="BORRAR", bg="red", command=eliminarCancion1)
     button2.config(font=("Courier", 20))
     button2.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     
