@@ -661,8 +661,10 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
         bAlbum = buscarAlbum(nombreAlbum)
         idAlbum = bAlbum[0]
 
-        bGenero = buscarGenero2(genero)
-        idGenero = int(bGenero[0])
+        bGenero = buscarGenero(genero)
+        idGenero = bGenero[0]
+
+        print(idGenero)
 
         mediatypeid = 1
         estado = True
