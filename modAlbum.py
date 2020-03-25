@@ -62,9 +62,8 @@ def ventanaModAlbum(tituloAlbum):
 
         modificarAlbum(idAlbum, titulo)
 
-    c=""
-    def eliminarArtista2():
-         c = "1"
+    def eliminarAlbum2():
+         eliminarAlbum(idAlbum)
 
     #BOTONES
     registrarborrarFrame = tk.Frame(registroAlbum, bg="LightGreen")
@@ -73,7 +72,7 @@ def ventanaModAlbum(tituloAlbum):
     button1.config(font=("Courier", 20))
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
 
-    button2 = tk.Button(registrarborrarFrame, text="ELIMINAR", bg="red", command=eliminarArtista2)
+    button2 = tk.Button(registrarborrarFrame, text="ELIMINAR", bg="red", command=eliminarAlbum2)
     button2.config(font=("Courier", 20))
     button2.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     

@@ -149,18 +149,17 @@ def ventanaModCancion(tituloCancion):
         
         modificarCancion(idCancion, titulo, precio)
         
-    c=""
     def eliminarCancion1():
-         c = "1"
+        eliminarCancion(idCancion)
 
     #BOTONES
     registrarborrarFrame = tk.Frame(registroCancion, bg="LightGreen")
     
-    button1 = tk.Button(registrarborrarFrame, text="REGISTRAR", bg="green", command=modificarCancion1)
+    button1 = tk.Button(registrarborrarFrame, text="MODIFICAR", bg="green", command=modificarCancion1)
     button1.config(font=("Courier", 20))
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
 
-    button2 = tk.Button(registrarborrarFrame, text="BORRAR", bg="red", command=eliminarCancion1)
+    button2 = tk.Button(registrarborrarFrame, text="ELIMINAR", bg="red", command=eliminarCancion1)
     button2.config(font=("Courier", 20))
     button2.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     

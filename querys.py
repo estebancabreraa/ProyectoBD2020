@@ -503,7 +503,7 @@ def eliminarArtista(idd, nombre):
         
         messagebox.showinfo(message=mensaje, title="Consulta")
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="No se pudo modificar el artista..", title="Consulta fallida")
+        messagebox.showerror(message="No se pudo eliminar el artista..", title="Consulta fallida")
         print (error)
     finally:
         #closing database connection.
@@ -512,7 +512,7 @@ def eliminarArtista(idd, nombre):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-def eliminarAlbum(idd, nombre):
+def eliminarAlbum(idd):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -521,18 +521,18 @@ def eliminarAlbum(idd, nombre):
                                       database = "proyecto1")
         cursor = connection.cursor()
         
-        create_table_query = '''UPDATE album SET title =%s WHERE albumid=%s;'''
+        create_table_query = '''DELETE FROM album WHERE albumid=%s;'''
         
         cursor.execute(create_table_query, (nombre, idd,))            
         
         connection.commit()
         
-        mensaje = "Album modificado con exito."
+        mensaje = "Album eliminado con exito."
         print(mensaje)
         
         messagebox.showinfo(message=mensaje, title="Consulta")
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="No se pudo modificar el album..", title="Consulta fallida")
+        messagebox.showerror(message="No se pudo eliminar el album..", title="Consulta fallida")
         print (error)
     finally:
         #closing database connection.
@@ -542,7 +542,7 @@ def eliminarAlbum(idd, nombre):
                 print("PostgreSQL connection is closed")
 
 
-def eliminarCancion(idd, nombre, precio):
+def eliminarCancion(idd):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -551,18 +551,18 @@ def eliminarCancion(idd, nombre, precio):
                                       database = "proyecto1")
         cursor = connection.cursor()
         
-        create_table_query = '''UPDATE track SET name =%s, unitprice=%s WHERE trackid=%s;'''
+        create_table_query = '''DELETE track WHERE trackid=%s'''
         
-        cursor.execute(create_table_query, (nombre, precio, idd,))            
+        cursor.execute(create_table_query, (idd,))            
         
         connection.commit()
         
-        mensaje = "Cancion modificada con exito."
+        mensaje = "Cancion eliminada con exito."
         print(mensaje)
         
         messagebox.showinfo(message=mensaje, title="Consulta")
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="No se pudo modificar la cancion..", title="Consulta fallida")
+        messagebox.showerror(message="No se pudo eliminar la cancion..", title="Consulta fallida")
         print (error)
     finally:
         #closing database connection.
