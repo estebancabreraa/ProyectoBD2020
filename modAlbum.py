@@ -5,8 +5,13 @@ from psycopg2 import Error
 from random import randint
 
 from proyecto import *
+from querys import *
 
 def ventanaModAlbum(tituloAlbum):
+    bAlbum = buscarAlbum(tituloAlbum)
+    idAlbum = bAlbum[0]
+    titulo = bAlbum[1]
+    
     registroAlbum = tk.Tk()
     registroAlbum.title("Registrar albumes")
     registroAlbum.geometry("800x600")
@@ -31,6 +36,9 @@ def ventanaModAlbum(tituloAlbum):
     idEdit = tk.Text(idAlbumFrame, width=30, height=1)
     idEdit.pack(side=tk.LEFT)
 
+    idEdit.insert("end-1c", idAlbum)
+    idEdit.configure(state="disabled")
+
     idAlbumFrame.pack(side=tk.TOP, anchor=tk.NW)
 
     #TITULO
@@ -43,41 +51,29 @@ def ventanaModAlbum(tituloAlbum):
     tituloEdit = tk.Text(tituloAlbumFrame, width=30, height=1)
     tituloEdit.pack(side=tk.LEFT)
 
-    tituloEdit.insert(1.0, tituloAlbum)
+    tituloEdit.insert(1.0, titulo)
     
     tituloAlbumFrame.pack(side=tk.TOP, anchor=tk.NW)
-    
-    #ARTISTA
-    artistaFrame = tk.Frame(registroAlbum)
-    
-    artistaa = tk.Label(artistaFrame, text="Artista:", bg="LightGreen", fg="black")
-    artistaa.config(font=("Courier", 12))
-    artistaa.pack(side=tk.LEFT)
-
-    artistaEdit = tk.Text(artistaFrame, width=30, height=1)
-    artistaEdit.pack(side=tk.LEFT)
-
-    artistaFrame.pack(side=tk.TOP, anchor=tk.NW)
-
-    
         
-    def modificarAlbum():
+        
+    def modificarAlbum2():
         idAlbum = idEdit.get("1.0",'end-1c')
         titulo = tituloEdit.get("1.0",'end-1c')
-        artista = artistaEdit.get("1.0",'end-1c')
+
+        modificarAlbum(idAlbum, titulo)
 
     c=""
-    def eliminarArtista():
+    def eliminarArtista2():
          c = "1"
 
     #BOTONES
     registrarborrarFrame = tk.Frame(registroAlbum, bg="LightGreen")
     
-    button1 = tk.Button(registrarborrarFrame, text="MODIFICAR", bg="green", command=modificarAlbum)
+    button1 = tk.Button(registrarborrarFrame, text="MODIFICAR", bg="green", command=modificarAlbum2)
     button1.config(font=("Courier", 20))
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
 
-    button2 = tk.Button(registrarborrarFrame, text="ELIMINAR", bg="red", command=eliminarArtista)
+    button2 = tk.Button(registrarborrarFrame, text="ELIMINAR", bg="red", command=eliminarArtista2)
     button2.config(font=("Courier", 20))
     button2.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     
