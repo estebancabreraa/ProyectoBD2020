@@ -60,9 +60,8 @@ def ventanaModArtista(nombreArtista):
 
         modificarArtista(idArtista, nombreArtista)
 
-    c=""
-    def eliminarArtista():
-         c = "1"
+    def eliminarArtista2():
+        eliminarArtista(idArtista, nombreArtista)
 
     #BOTONES
     registrarborrarFrame = tk.Frame(registroArtista, bg="LightGreen")
@@ -71,7 +70,7 @@ def ventanaModArtista(nombreArtista):
     button1.config(font=("Courier", 20))
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
 
-    button2 = tk.Button(registrarborrarFrame, text="ELIMINAR", bg="red", command=eliminarArtista)
+    button2 = tk.Button(registrarborrarFrame, text="ELIMINAR", bg="red", command=eliminarArtista2)
     button2.config(font=("Courier", 20))
     button2.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     

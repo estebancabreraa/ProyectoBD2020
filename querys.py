@@ -489,34 +489,7 @@ def eliminarArtista(idd, nombre):
                                       database = "proyecto1")
         cursor = connection.cursor()
 
-        #alter table MyOtherTable nocheck constraint all
-        #delete from MyTable
-        #alter table MyOtherTable check constraint all
-        
-        create_table_query = '''alter table artist DISABLE CONSTRAINTS ALL;'''
-        
-        cursor.execute(create_table_query)            
-        
-        connection.commit()
-
-        cursor = connection.cursor()
-
-        create_table_query = '''alter table album DISABLE CONSTRAINTS ALL;'''
-        
-        cursor.execute(create_table_query)            
-        
-        connection.commit()
-
-        cursor = connection.cursor()
-
-        create_table_query = '''alter table track DISABLE CONSTRAINTS ALL;'''
-        
-        cursor.execute(create_table_query)            
-        
-        connection.commit()
-
-        cursor = connection.cursor()
-
+    
         create_table_query = '''DELETE FROM artist WHERE artistid=%s;'''
         
         cursor.execute(create_table_query, (idd,))            
@@ -524,42 +497,6 @@ def eliminarArtista(idd, nombre):
         connection.commit()
 
         cursor = connection.cursor()
-        
-        create_table_query = '''DELETE FROM album WHERE artistid=%s;'''
-        
-        cursor.execute(create_table_query, (idd,))            
-        
-        connection.commit()
-
-        cursor = connection.cursor()
-        
-        create_table_query = '''DELETE FROM track WHERE composer=%s;'''
-        
-        cursor.execute(create_table_query, (nombre,))            
-        
-        connection.commit()
-
-        create_table_query = '''alter table artist ENABLE CONSTRAINTS ALL;'''
-        
-        cursor.execute(create_table_query)            
-        
-        connection.commit()
-
-        cursor = connection.cursor()
-
-        create_table_query = '''alter table album ENABLE CONSTRAINTS ALL;'''
-        
-        cursor.execute(create_table_query)            
-        
-        connection.commit()
-
-        cursor = connection.cursor()
-
-        create_table_query = '''ALTER TABLE track ENABLE CONSTRAINTS ALL;'''
-        
-        cursor.execute(create_table_query)            
-        
-        connection.commit()
         
         mensaje = "Artista eliminado con exito."
         print(mensaje)
