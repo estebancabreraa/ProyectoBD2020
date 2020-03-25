@@ -5,6 +5,7 @@ from psycopg2 import Error
 from random import randint
 
 from proyecto import *
+from querys import *
 
 def ventanaInactivarCancion():
     inactivar = tk.Tk()
@@ -38,17 +39,17 @@ def ventanaInactivarCancion():
     def borrarCampos4():
         tituloEdit.delete('1.0', 'end-1c')
         
-    def inactivarCancion():
+    def inactivarCancion2():
         titulo = tituloEdit.get("1.0",'end-1c')
         
-        #LLAMAR A FUNCION AQUI
+        inactivarCancion(titulo)
         
         borrarCampos4()
 
     #BOTONES
     registrarborrarFrame = tk.Frame(inactivar, bg="LightGreen")
     
-    button1 = tk.Button(registrarborrarFrame, text="INACTIVAR", bg="green", command=inactivarCancion)
+    button1 = tk.Button(registrarborrarFrame, text="INACTIVAR", bg="green", command=inactivarCancion2)
     button1.config(font=("Courier", 20))
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
 

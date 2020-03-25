@@ -5,8 +5,12 @@ from psycopg2 import Error
 from random import randint
 
 from proyecto import *
+from querys import *
 
 def ventanaModArtista(nombreArtista):
+    bArtista = buscarArtista(nombreArtista)
+    idArtista = bArtista[0]
+    
     registroArtista = tk.Tk()
     registroArtista.title("Modificar artista")
     registroArtista.geometry("800x600")
@@ -29,7 +33,11 @@ def ventanaModArtista(nombreArtista):
     idd.pack(side=tk.LEFT)
 
     idEdit = tk.Text(idArtistaFrame, width=30, height=1)
+    
     idEdit.pack(side=tk.LEFT)
+    idEdit.insert("end-1c", idArtista)
+    idEdit.configure(state="disabled")
+
 
     idArtistaFrame.pack(side=tk.TOP, anchor=tk.NW)
 
@@ -41,17 +49,16 @@ def ventanaModArtista(nombreArtista):
     nombree.pack(side=tk.LEFT)
 
     nombreEdit = tk.Text(nombreArtistaFrame, width=30, height=1)
+    nombreEdit.insert("end-1c", nombreArtista)
     nombreEdit.pack(side=tk.LEFT)
-
-    nombreEdit.insert(1.0, nombreArtista)
     
     nombreArtistaFrame.pack(side=tk.TOP, anchor=tk.NW)
 
-    def modificarArtista():
+    def modificarArtista2():
         idArtista = idEdit.get("1.0",'end-1c')
         nombreArtista = nombreEdit.get("1.0",'end-1c')
 
-        #LLAMAR A FUNCION AQUI
+        modificarArtista(idArtista, nombreArtista)
 
     c=""
     def eliminarArtista():
@@ -60,7 +67,7 @@ def ventanaModArtista(nombreArtista):
     #BOTONES
     registrarborrarFrame = tk.Frame(registroArtista, bg="LightGreen")
     
-    button1 = tk.Button(registrarborrarFrame, text="MODIFICAR", bg="green", command=modificarArtista)
+    button1 = tk.Button(registrarborrarFrame, text="MODIFICAR", bg="green", command=modificarArtista2)
     button1.config(font=("Courier", 20))
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
 

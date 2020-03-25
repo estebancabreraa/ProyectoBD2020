@@ -5,6 +5,7 @@ from psycopg2 import Error
 from random import randint
 
 from proyecto import *
+from querys import *
 
 def ventanaRegCancion():
     registroCancion = tk.Tk()
@@ -81,22 +82,10 @@ def ventanaRegCancion():
 
     generoFrame.pack(side=tk.TOP, anchor=tk.NW)
 
-    #Duracion:
-    duracionFrame = tk.Frame(registroCancion)
-    
-    duracionn = tk.Label(duracionFrame, text="Duracion (milisegundos):", bg="LightGreen", fg="black")
-    duracionn.config(font=("Courier", 12))
-    duracionn.pack(side=tk.LEFT)
-
-    duracionEdit = tk.Text(duracionFrame, width=30, height=1)
-    duracionEdit.pack(side=tk.LEFT)
-
-    duracionFrame.pack(side=tk.TOP, anchor=tk.NW)
-
     #Precio:
     precioFrame = tk.Frame(registroCancion)
     
-    precioo = tk.Label(precioFrame, text="Precio unitario):", bg="LightGreen", fg="black")
+    precioo = tk.Label(precioFrame, text="Precio unitario:", bg="LightGreen", fg="black")
     precioo.config(font=("Courier", 12))
     precioo.pack(side=tk.LEFT)
 
@@ -112,7 +101,6 @@ def ventanaRegCancion():
         tituloAlbumEdit.delete('1.0', 'end-1c')
         artistaEdit.delete('1.0', 'end-1c')
         generoEdit.delete('1.0', 'end-1c')
-        duracionEdit.delete('1.0', 'end-1c')
         precioEdit.delete('1.0', 'end-1c')
         
     def registrarCancion():
@@ -121,10 +109,9 @@ def ventanaRegCancion():
         tituloAlbum = tituloAlbumEdit.get("1.0",'end-1c')
         artista = artistaEdit.get("1.0",'end-1c')
         genero = generoEdit.get("1.0",'end-1c')
-        duracion = duracionEdit.get("1.0",'end-1c')
         precio = precioEdit.get("1.0",'end-1c')
 
-        #LLAMAR A FUNCION AQUI
+        insertarCancion(idCancion, titulo, tituloAlbum, artista, genero, precio)
         
         borrarCampos3()
 

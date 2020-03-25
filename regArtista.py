@@ -5,6 +5,7 @@ from psycopg2 import Error
 from random import randint
 
 from proyecto import *
+from querys import *
 
 def ventanaRegArtista():
     registroArtista = tk.Tk()
@@ -53,7 +54,7 @@ def ventanaRegArtista():
         idArtista = idEdit.get("1.0",'end-1c')
         nombreArtista = nombreEdit.get("1.0",'end-1c')
 
-        #LLAMAR A FUNCION AQUI
+        insertarArtista(idArtista, nombreArtista)
         
         borrarCampos1()
 
