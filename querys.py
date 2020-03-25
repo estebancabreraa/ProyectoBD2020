@@ -293,7 +293,7 @@ def buscarGenero(nombre):
         connection.commit()
         
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="No se encontro el artista.", title="Consulta fallida")
+        messagebox.showerror(message="No se encontro el genero.", title="Consulta fallida")
         print (error)
     finally:
         #closing database connection.
