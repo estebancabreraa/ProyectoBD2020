@@ -266,6 +266,44 @@ def buscarGeneroID(idd):
 
     return nombre
 
+def buscarGenero(nombre):
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto1")
+        cursor = connection.cursor()
+        
+        create_table_query = '''SELECT * FROM genre WHERE name=%s;'''
+        
+        cursor.execute(create_table_query, (nombre,))
+
+        result = cursor.fetchall()
+
+        idArtista = ""
+        nombre = ""
+        
+        for row in result:
+            idGenero = row[0]
+            nombre = row[1]
+            
+        resultado = [idArtista, nombre]
+        
+        connection.commit()
+        
+    except (Exception, psycopg2.DatabaseError) as error :
+        messagebox.showerror(message="No se encontro el artista.", title="Consulta fallida")
+        print (error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+
+    return idGenero
+
 ################################################################################
 #                                     MODIFICAR                                #
 ################################################################################
@@ -357,7 +395,7 @@ def modificarCancion(idd, nombre, precio):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-def buscarGenero(nombre):
+def F(nombre):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
