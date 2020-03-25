@@ -395,7 +395,7 @@ def modificarCancion(idd, nombre, precio):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-def F(nombre):
+def buscarGenero2(nombre):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -423,7 +423,7 @@ def F(nombre):
         
     except (Exception, psycopg2.DatabaseError) as error :
         messagebox.showerror(message="No se encontro el genero.", title="Consulta fallida")
-        print ("No se pudo registrar cliente.", error)
+        print ("No se encontro el genero.", error)
     finally:
         #closing database connection.
             if(connection):
@@ -661,8 +661,8 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
         bAlbum = buscarAlbum(nombreAlbum)
         idAlbum = bAlbum[0]
 
-        bGenero = buscarGenero(genero)
-        idGenero = int(bGenero[0])
+        bGenero = buscarGenero2(genero)
+        idGenero = bGenero[0]
 
         mediatypeid = 1
         estado = True
@@ -691,7 +691,7 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
         messagebox.showinfo(message=mensaje, title="Consulta")
     except (Exception, psycopg2.DatabaseError) as error :
         messagebox.showerror(message="No se pudo registrar la cancion.", title="Consulta fallida")
-        print ("No se pudo registrar artista.", error)
+        print ("No se pudo registrar la cancion.", error)
     finally:
         #closing database connection.
             if(connection):
