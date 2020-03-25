@@ -243,19 +243,19 @@ def buscarGeneroID(idd):
 
         result = cursor.fetchall()
 
-        idArtista = ""
+        idGenero = ""
         nombre = ""
         
         for row in result:
             idGenero = row[0]
             nombre = row[1]
             
-        resultado = [idArtista, nombre]
+        resultado = [idGenero, nombre]
         
         connection.commit()
         
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="No se encontro el artista.", title="Consulta fallida")
+        messagebox.showerror(message="No se encontro el genero.", title="Consulta fallida")
         print (error)
     finally:
         #closing database connection.
@@ -281,14 +281,14 @@ def buscarGenero(nombre):
 
         result = cursor.fetchall()
 
-        idArtista = ""
+        idGenero = ""
         nombre = ""
         
         for row in result:
             idGenero = row[0]
             nombre = row[1]
             
-        resultado = [idArtista, nombre]
+        resultado = [idGenero, nombre]
         
         connection.commit()
         
