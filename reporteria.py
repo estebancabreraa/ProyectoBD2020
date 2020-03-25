@@ -5,7 +5,7 @@ from tkinter import Entry
 from tkinter import ttk
 import psycopg2
 from psycopg2 import Error
-
+from reporteria import *
 from ReporteriaQueries import *
 
 
