@@ -1,10 +1,12 @@
 import psycopg2
 from psycopg2 import Error
 from random import randint
+from tkinter import messagebox
 
 def buscarArtista():
     try:
         nombre = "Led Zeppelin"
+        
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
                                       host = "127.0.0.1",
