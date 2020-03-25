@@ -3,12 +3,13 @@ from tkinter import messagebox
 import psycopg2
 from psycopg2 import Error
 from random import randint
-
 from proyecto import *
 from regArtista import *
 from regAlbum import *
 from regCancion import *
 from inactivar import *
+from buscar import *
+
 ################################################################################
 #                                    MENU                                      #
 ################################################################################
@@ -41,15 +42,8 @@ def ventanaMenu():
     inactivar.config(font=("Courier", 20))
     inactivar.pack(pady=10)
 
-    modArtista = tk.Button(menu, text="Modificar Artista")#, command=mostrarVentanaClientes)
-    modArtista.config(font=("Courier", 20))
-    modArtista.pack(pady=10, ipadx=8)
+    buscar = tk.Button(menu, text="Buscar", command=ventanaBuscar)
+    buscar.config(font=("Courier", 20))
+    buscar.pack(pady=10, ipadx=8)
 
-    modAlbum = tk.Button(menu, text="Modificar Album")#, command=mostrarVentanaProductos)
-    modAlbum.config(font=("Courier", 20))
-    modAlbum.pack(pady=10)
-
-    modCancion = tk.Button(menu, text="Modificar Cancion")#, command=mostrarVentanaProductos)
-    modCancion.config(font=("Courier", 20))
-    modCancion.pack(pady=10)
-
+   
