@@ -8,7 +8,7 @@ from proyecto import *
 from querys import *
 
 def ventanaModAlbum(tituloAlbum):
-    bAlbum = buscarAlbum(tituloAlbum)
+    bAlbum = buscarAlbumMod(tituloAlbum)
     idAlbum = bAlbum[0]
     titulo = bAlbum[1]
     
