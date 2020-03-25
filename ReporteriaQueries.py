@@ -48,10 +48,6 @@ order by count(artist1.name) desc LIMIT 5;
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-
-
-artistaAlbum()
-
 def CancionGenero():
     try:
        
@@ -96,13 +92,6 @@ order by count(genre1.name) desc LIMIT 5
                 cursor.close()
                 connection.close()
                 print("PostgreSQL connection is closed")
-
-
-
-CancionGenero()
-
-
-
 
 def playlistDuracion():
     try:
@@ -152,11 +141,6 @@ ORDER BY Cuenta desc;
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-
-
-playlistDuracion()
-
-
 def CancionMayorDuracion():
     try:
        
@@ -202,11 +186,6 @@ order by (track1.milliseconds) desc LIMIT 5;
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-
-
-CancionMayorDuracion()
-
-
 def usuariosTop():
     try:
        
@@ -251,13 +230,6 @@ ORDER BY Canciones_Agregadas DESC LIMIT 5;
                 cursor.close()
                 connection.close()
                 print("PostgreSQL connection is closed")
-
-
-
-usuariosTop()
-
-
-
 
 def promedioGenero():
     try:
@@ -305,11 +277,6 @@ ORDER BY AveragePerGenre DESC
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-
-
-promedioGenero()
-
-
 def playlistArtista():
     try:
        
@@ -355,10 +322,6 @@ order by count(artist1.name) desc
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-
-
-playlistArtista()
-
 def diversidad():
     try:
        
@@ -402,14 +365,3 @@ order by count(genre1.genreid) desc LIMIT 5
                 cursor.close()
                 connection.close()
                 print("PostgreSQL connection is closed")
-
-
-
-diversidad()
-
-
-
-
-
-
-
