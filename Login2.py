@@ -4,7 +4,7 @@ from random import randint
 from tkinter import Entry
 import psycopg2
 from psycopg2 import Error
-from menuAdmin.py import *
+from menuAdmin import *
 
 def Login():
 
@@ -68,10 +68,11 @@ def Login():
 
         for row in result:
             contrasena = row[15]
-
+        print(contrasena, password)
+        
         if password == contrasena:
             print("Usuario y contraseña correcta")
-            ventanaMenu()
+            mostrarVentana()
 
             
         else:
