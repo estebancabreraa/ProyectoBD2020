@@ -390,7 +390,7 @@ def buscarGenero(nombre):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-    return idGenero
+    return resultado
 
 ################################################################################
 #                                     MODIFICAR                                #
@@ -686,7 +686,11 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
         bAlbum = buscarAlbum(nombreAlbum)
         idAlbum = bAlbum[0]
 
-        idGenero = buscarGenero(genero)
+        idGenero = 1
+        bGenero = buscarGenero(genero)
+        idGenero = bGenero[0]
+
+        print(idGenero)
         
         mediatypeid = 1
         estado = True
@@ -716,8 +720,6 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
     except (Exception, psycopg2.DatabaseError) as error :
         messagebox.showerror(message="No se pudo registrar la cancion.", title="Consulta fallida")
         print ("No se pudo registrar la cancion.", error)
-        print( "genero", idGenero)
-        print( "album", idAlbum)
     finally:
         #closing database connection.
             if(connection):
