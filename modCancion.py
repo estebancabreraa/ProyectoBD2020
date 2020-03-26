@@ -22,7 +22,7 @@ def ventanaModCancion(tituloCancion):
     colaborador = bCancion[10]
 
     genero = buscarGeneroID(genreid)
-    tituloAlbum = buscarAlbumID(albumid)
+    tituloAlbum = buscarAlbumNombre(albumid)
     
     registroCancion = tk.Tk()
     registroCancion.title("Registrar canciones")
