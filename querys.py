@@ -126,7 +126,7 @@ def buscarAlbum(nombre):
 
     return albumid
 
-def buscarAlbum(nombre):
+def buscarAlbumID(nombre):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -141,7 +141,7 @@ def buscarAlbum(nombre):
 
         result = cursor.fetchall()
 
-        albumid = ""
+        albumid = 0
         title = ""
         artistid = ""
         
