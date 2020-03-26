@@ -256,7 +256,7 @@ def buscarAlbumMod(nombre):
 
     return resultado
 
-def buscarCancion(nombre):
+def buscarCancionnombre):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -686,8 +686,7 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
         bAlbum = buscarAlbum(nombreAlbum)
         idAlbum = bAlbum[0]
 
-        bGenero = buscarGenero(genero)
-        idGenero = bGenero[0]
+        idGenero = buscarGenero(genero)
         
         mediatypeid = 1
         estado = True
