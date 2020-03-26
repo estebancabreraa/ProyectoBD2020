@@ -9,7 +9,6 @@ from regAlbum import *
 from regCancion import *
 from inactivar import *
 from buscar import *
-from menuAdmin import *
 from reporteria import *
 
 ################################################################################
@@ -51,5 +50,4 @@ def ventanaMenu():
     reporteria = tk.Button(menu, text="Reporteria", command=ventanaReporteria)
     reporteria.config(font=("Courier", 20))
     reporteria.pack(pady=10)
-
    

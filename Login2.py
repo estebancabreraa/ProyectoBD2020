@@ -4,6 +4,7 @@ from random import randint
 from tkinter import Entry
 import psycopg2
 from psycopg2 import Error
+from menuAdmin.py import *
 
 def Login():
 
@@ -39,7 +40,48 @@ def Login():
         connection.commit()
 
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="Email no registrado", title="Consulta fallida")
+        messagebox.showerror(message="Email no registrado en usuarios", title="Consulta fallida")
+        print ("Email no registrado", error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                messagebox.showerror(message="Email o contraseña erronea", title="Consulta fallida")
+                print("PostgreSQL connection is closed")
+    
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto1")
+        cursor = connection.cursor()
+
+        create_table_query = '''SELECT * FROM employee WHERE Email=%s;'''
+
+        cursor.execute(create_table_query, (Email,))
+
+        result = cursor.fetchall()
+
+        contrasena = ""
+
+        for row in result:
+            contrasena = row[15]
+
+        if password == contrasena:
+            print("Usuario y contraseña correcta")
+            ventanaMenu()
+
+            
+        else:
+            print("El email o contraseña es invalido")
+            messagebox.showerror(message="Email o contraseña erronea", title="Error")
+
+        connection.commit()
+
+    except (Exception, psycopg2.DatabaseError) as error :
+        messagebox.showerror(message="Email no registrado en administradores", title="Consulta fallida")
         print ("Email no registrado", error)
     finally:
         #closing database connection.
