@@ -595,7 +595,7 @@ def eliminarCancion(idd):
                                       database = "proyecto1")
         cursor = connection.cursor()
         
-        create_table_query = '''DELETE track WHERE trackid=%s'''
+        create_table_query = '''DELETE track WHERE trackid=%s;'''
         
         cursor.execute(create_table_query, (idd,))            
         
