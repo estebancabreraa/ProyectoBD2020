@@ -179,9 +179,9 @@ def buscarAlbumNombre(idd):
                                       database = "proyecto1")
         cursor = connection.cursor()
         
-        create_table_query = '''SELECT * FROM album WHERE title=%s;'''
+        create_table_query = '''SELECT * FROM album WHERE albumid=%s;'''
         
-        cursor.execute(create_table_query, (nombre,))
+        cursor.execute(create_table_query, (idd,))
 
         result = cursor.fetchall()
 
