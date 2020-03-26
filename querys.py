@@ -256,7 +256,7 @@ def buscarAlbumMod(nombre):
 
     return resultado
 
-def buscarCancionnombre):
+def buscarCancion(nombre):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
