@@ -26,11 +26,12 @@ def Login():
         result = cursor.fetchall()
 
         contrasena = ""
-        ventanaMenu()
+        
         for row in result:
             contrasena = row[13]
 
         if (password == contrasena):
+            ventanaMenu()
             print("Usuario y contraseña correcta")
             
         else:
@@ -71,6 +72,7 @@ def Login():
         print(contrasena, password)
         
         if (password == contrasena):
+            ventanaMenu()
             print("Usuario y contraseña correcta")
             
 
