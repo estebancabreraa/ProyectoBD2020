@@ -36,19 +36,16 @@ def Login():
             
         else:
             print("El email o contraseña es invalido")
-            messagebox.showerror(message="Email o contraseña erronea", title="Error")
-
+            
         connection.commit()
 
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="Email no registrado en usuarios", title="Consulta fallida")
         print ("Email no registrado", error)
     finally:
         #closing database connection.
             if(connection):
                 cursor.close()
                 connection.close()
-                messagebox.showerror(message="Email o contraseña erronea", title="Consulta fallida")
                 print("PostgreSQL connection is closed")
     
     try:
@@ -79,19 +76,16 @@ def Login():
             
         else:
             print("El email o contraseña es invalido")
-            messagebox.showerror(message="Email o contraseña erronea", title="Error")
-
+            
         connection.commit()
 
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="Email no registrado en administradores", title="Consulta fallida")
         print ("Email no registrado", error)
     finally:
         #closing database connection.
             if(connection):
                 cursor.close()
                 connection.close()
-                messagebox.showerror(message="Email o contraseña erronea", title="Consulta fallida")
                 print("PostgreSQL connection is closed")
     
       
