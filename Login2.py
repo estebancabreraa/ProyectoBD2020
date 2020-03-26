@@ -26,11 +26,11 @@ def Login():
         result = cursor.fetchall()
 
         contrasena = ""
-
+        ventanaMenu()
         for row in result:
             contrasena = row[13]
 
-        if password == contrasena:
+        if (password == contrasena):
             print("Usuario y contraseña correcta")
             
         else:
@@ -63,16 +63,16 @@ def Login():
         cursor.execute(create_table_query, (Email,))
 
         result = cursor.fetchall()
-
+        ventanaMenu()
         contrasena = ""
 
         for row in result:
             contrasena = row[15]
         print(contrasena, password)
         
-        if password == contrasena:
+        if (password == contrasena):
             print("Usuario y contraseña correcta")
-            mostrarVentana()
+            
 
             
         else:
