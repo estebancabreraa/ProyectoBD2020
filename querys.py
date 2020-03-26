@@ -390,7 +390,7 @@ def buscarGenero(nombre):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-    return idGenero
+    return resultado
 
 ################################################################################
 #                                     MODIFICAR                                #
@@ -687,7 +687,8 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
         idAlbum = bAlbum[0]
 
         idGenero = 1
-        idGenero = buscarGenero(genero)
+        bGenero = buscarGenero(genero)
+        idGenero = bGenero[0]
 
         print(idGenero)
         
