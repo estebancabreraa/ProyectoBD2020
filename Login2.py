@@ -4,7 +4,7 @@ from random import randint
 from tkinter import Entry
 import psycopg2
 from psycopg2 import Error
-from menuAdmin.py import *
+from menuAdmin import *
 
 def Login():
 
@@ -26,28 +26,26 @@ def Login():
         result = cursor.fetchall()
 
         contrasena = ""
-
+        
         for row in result:
             contrasena = row[13]
 
-        if password == contrasena:
+        if (password == contrasena):
+            ventanaMenu()
             print("Usuario y contraseña correcta")
             
         else:
             print("El email o contraseña es invalido")
-            messagebox.showerror(message="Email o contraseña erronea", title="Error")
-
+            
         connection.commit()
 
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="Email no registrado en usuarios", title="Consulta fallida")
         print ("Email no registrado", error)
     finally:
         #closing database connection.
             if(connection):
                 cursor.close()
                 connection.close()
-                messagebox.showerror(message="Email o contraseña erronea", title="Consulta fallida")
                 print("PostgreSQL connection is closed")
     
     try:
@@ -63,32 +61,31 @@ def Login():
         cursor.execute(create_table_query, (Email,))
 
         result = cursor.fetchall()
-
+        ventanaMenu()
         contrasena = ""
 
         for row in result:
             contrasena = row[15]
-
-        if password == contrasena:
-            print("Usuario y contraseña correcta")
+        print(contrasena, password)
+        
+        if (password == contrasena):
             ventanaMenu()
+            print("Usuario y contraseña correcta")
+            
 
             
         else:
             print("El email o contraseña es invalido")
-            messagebox.showerror(message="Email o contraseña erronea", title="Error")
-
+            
         connection.commit()
 
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="Email no registrado en administradores", title="Consulta fallida")
         print ("Email no registrado", error)
     finally:
         #closing database connection.
             if(connection):
                 cursor.close()
                 connection.close()
-                messagebox.showerror(message="Email o contraseña erronea", title="Consulta fallida")
                 print("PostgreSQL connection is closed")
     
       

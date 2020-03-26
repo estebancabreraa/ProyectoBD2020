@@ -56,7 +56,7 @@ edit2.pack(side=tk.LEFT)
 password.pack(side=tk.TOP, anchor="c",  pady=10)
     
 #Buttons
-button1 = tk.Button(login, text="Entrar" , command=ventanaMenu)
+button1 = tk.Button(login, text="Entrar" , command="ventanaMenu")
 button1.config(font=("Courier", 20))
 button1.pack(pady=10, ipadx=8)
 
