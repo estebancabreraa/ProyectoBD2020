@@ -211,7 +211,7 @@ def buscarAlbumNombre(idd):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-    return nombre
+    return title
 
 def buscarAlbumMod(nombre):
     try:
