@@ -6,7 +6,7 @@ import psycopg2
 from psycopg2 import Error
 from menuAdmin import *
 from reporteria import *
-
+from menuUsuario import *
 def Login():
 
     Email = entry2.get()
@@ -32,7 +32,7 @@ def Login():
             contrasena = row[13]
 
         if (password == contrasena):
-            ventanaMenu()
+            ventanaMenuUsuario()
             print("Usuario y contraseña correcta")
             
         else:
@@ -48,46 +48,48 @@ def Login():
                 cursor.close()
                 connection.close()
                 print("PostgreSQL connection is closed")
-    
-    try:
-        connection = psycopg2.connect(user = "postgres",
-                                      password = "123456",
-                                      host = "127.0.0.1",
-                                      port = "5433",
-                                      database = "proyecto1")
-        cursor = connection.cursor()
+    if(password == contrasena):
+        print("Entro")
+    else:
+        try:
+            connection = psycopg2.connect(user = "postgres",
+                                          password = "123456",
+                                          host = "127.0.0.1",
+                                          port = "5433",
+                                          database = "proyecto1")
+            cursor = connection.cursor()
 
-        create_table_query = '''SELECT * FROM employee WHERE Email=%s;'''
+            create_table_query = '''SELECT * FROM employee WHERE Email=%s;'''
 
-        cursor.execute(create_table_query, (Email,))
+            cursor.execute(create_table_query, (Email,))
 
-        result = cursor.fetchall()
-        ventanaMenu()
-        contrasena = ""
-
-        for row in result:
-            contrasena = row[15]
-        print(contrasena, password)
-        
-        if (password == contrasena):
-            ventanaReporteria()
-            print("Usuario y contraseña correcta")
+            result = cursor.fetchall()
             
+            contrasena = ""
 
+            for row in result:
+                contrasena = row[15]
+            print(contrasena, password)
             
-        else:
-            print("El email o contraseña es invalido")
-            
-        connection.commit()
+            if (password == contrasena):
+                ventanaMenu()
+                print("Usuario y contraseña correcta")
+                
 
-    except (Exception, psycopg2.DatabaseError) as error :
-        print ("Email no registrado", error)
-    finally:
-        #closing database connection.
-            if(connection):
-                cursor.close()
-                connection.close()
-                print("PostgreSQL connection is closed")
+                
+            else:
+                print("El email o contraseña es invalido")
+                
+            connection.commit()
+
+        except (Exception, psycopg2.DatabaseError) as error :
+            print ("Email no registrado", error)
+        finally:
+            #closing database connection.
+                if(connection):
+                    cursor.close()
+                    connection.close()
+                    print("PostgreSQL connection is closed")
     
       
 def crearUsuario(customerid, firstname, lastname, company, address, city, state, country, postalcode, phone, fax, email, supportrepid, password):
@@ -296,8 +298,6 @@ def Signup():
     button3 = tk.Button(registrarFrame, text = "SIGN UP", font = ("Courier", 15), command = registrarUsuario)
     button3.pack()
     registrarFrame.pack()
-
-
 
 ######
 # MAIN 

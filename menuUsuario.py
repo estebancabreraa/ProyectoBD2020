@@ -13,8 +13,8 @@ from reporteria import *
 ################################################################################
 #                                    MENU                                      #
 ################################################################################
-def ventanaMenu():
-    
+def ventanaMenuUsuario():
+
     menu = tk.Tk()
     menu.title("Menu")
     menu.geometry("800x700")
@@ -24,8 +24,8 @@ def ventanaMenu():
     labelMenu = tk.Label(menu, text="Menu", bg="LightGreen", fg="black")
     labelMenu.config(font=("Century", 44), pady=20)
     labelMenu.pack()
-
-    labelMenu1 = tk.Label(menu, text="Administrador", bg="LightGreen", fg="black")
+    
+    labelMenu1 = tk.Label(menu, text="Usuario", bg="LightGreen", fg="black")
     labelMenu1.config(font=("Century", 20), pady=5)
     labelMenu1.pack()
 
@@ -50,7 +50,3 @@ def ventanaMenu():
     buscar.config(font=("Courier", 20))
     buscar.pack(pady=10, ipadx=8)
 
-    reporteria = tk.Button(menu, text="Reporteria", command=ventanaReporteria)
-    reporteria.config(font=("Courier", 20))
-    reporteria.pack(pady=10)
-   
