@@ -42,10 +42,6 @@ def ventanaMenuUsuario():
     regCancion.config(font=("Courier", 20))
     regCancion.pack(pady=10)
 
-    inactivar = tk.Button(menu, text="Inactivar Cancion", command=ventanaInactivarCancion)
-    inactivar.config(font=("Courier", 20))
-    inactivar.pack(pady=10)
-
     buscar = tk.Button(menu, text="Buscar", command=ventanaBuscar)
     buscar.config(font=("Courier", 20))
     buscar.pack(pady=10, ipadx=8)
