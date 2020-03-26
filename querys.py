@@ -523,7 +523,7 @@ def eliminarAlbum(idd):
         
         create_table_query = '''DELETE FROM album WHERE albumid=%s;'''
         
-        cursor.execute(create_table_query, (nombre, idd,))            
+        cursor.execute(create_table_query, (idd,))            
         
         connection.commit()
         
