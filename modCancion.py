@@ -4,7 +4,6 @@ import psycopg2
 from psycopg2 import Error
 from random import randint
 
-from proyecto import *
 from querys import *
 
 def ventanaModCancion(tituloCancion):

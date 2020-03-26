@@ -3,7 +3,6 @@ from tkinter import messagebox
 import psycopg2
 from psycopg2 import Error
 from random import randint
-from proyecto import *
 from regArtista import *
 from regAlbum import *
 from regCancion import *
