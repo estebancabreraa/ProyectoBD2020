@@ -5,6 +5,7 @@ from tkinter import Entry
 import psycopg2
 from psycopg2 import Error
 from menuAdmin import *
+from reporteria import *
 
 def Login():
 
@@ -69,7 +70,7 @@ def Login():
         print(contrasena, password)
         
         if (password == contrasena):
-            ventanaMenu()
+            ventanaReporteria()
             print("Usuario y contraseña correcta")
             
 
