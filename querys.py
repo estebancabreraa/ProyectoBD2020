@@ -83,48 +83,6 @@ def buscarArtista(nombre):
 
     return resultado
 
-def buscarAlbum(nombre):
-    try:
-        connection = psycopg2.connect(user = "postgres",
-                                      password = "123456",
-                                      host = "127.0.0.1",
-                                      port = "5433",
-                                      database = "proyecto2")
-        cursor = connection.cursor()
-        
-        create_table_query = '''SELECT * FROM album WHERE title=%s;'''
-        
-        cursor.execute(create_table_query, (nombre,))
-
-        result = cursor.fetchall()
-
-        albumid = ""
-        title = ""
-        artistid = ""
-        
-        for row in result:
-            albumid = row[0]
-            title = row[1]
-            artistid = row[2]
-            
-        resultado = [albumid, title, artistid]
-        connection.commit()
-        
-        mensaje = "Se encontro el album exitosamente."
-        print(resultado)
-        
-        messagebox.showinfo(message=mensaje, title="Consulta")
-    except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="No se encontro el album.", title="Consulta fallida")
-        print (error)
-    finally:
-        #closing database connection.
-            if(connection):
-                cursor.close()
-                connection.close()
-                print("PostgreSQL connection is closed")
-
-    return albumid
 
 def buscarAlbum(nombre):
     try:
@@ -390,7 +348,7 @@ def buscarGenero(nombre):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-    return resultado
+    return resultado[0]
 
 ################################################################################
 #                                     MODIFICAR                                #
@@ -682,21 +640,24 @@ def insertarAlbum(idd, nombre, nombreArtista):
                 print("PostgreSQL connection is closed")
 
 def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
-    try:
-        bAlbum = buscarAlbum(nombreAlbum)
-        idAlbum = bAlbum[0]
+    idAlbum = 1
+    bAlbum = buscarAlbum(nombreAlbum)
+    idAlbum = bAlbum
 
-        idGenero = 1
-        bGenero = buscarGenero(genero)
-        idGenero = bGenero[0]
+    idGenero = 1
 
-        print(idGenero)
+    idGenero = buscarGenero(genero)
+
+    print(idGenero)
+    print(idAlbum)
         
-        mediatypeid = 1
-        estado = True
-        colaborador = ""
-        bytess = randint(100000, 9999999)
-        milisegundos = randint(100000, 999999)
+    mediatypeid = 1
+    estado = True
+    colaborador = ""
+    bytess = randint(100000, 9999999)
+    milisegundos = randint(100000, 999999)
+    try:
+        
         
            
         connection = psycopg2.connect(user = "postgres",
@@ -739,7 +700,7 @@ def inactivarCancion(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto2")
+                                      database = "proyecto1")
         cursor = connection.cursor()
         
         create_table_query = '''UPDATE track SET estado =%s WHERE name=%s;'''

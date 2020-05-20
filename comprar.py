@@ -20,6 +20,8 @@ def ventanaComprar():
     compra.geometry("800x700")
     compra.configure(background="LightGreen")
 
-    
+
+
+        
    
 
