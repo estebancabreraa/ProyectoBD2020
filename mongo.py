@@ -8,8 +8,13 @@ shopping = mydb["shopping-cart"]
 
 compra = mydb["compra"]
 
-mydict = {"idCart": 1, "idClient": 1, "idTrack": 1, "subtotal": 0.99}
+mydict = {"idCart": 2, "idClient": 0, "idTrack": 1, "subtotal": 0.99}
 
+myquery = { "idClient": 0}
 
-for x in shopping.find({},{"idTrack": 1}):
+x = shopping.insert_one(mydict)
+#DELETE
+#shopping.delete_many(myquery)
+
+for x in shopping.find(myquery):
   print(x)
