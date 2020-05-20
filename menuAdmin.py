@@ -54,3 +54,4 @@ def ventanaMenu():
     reporteria.config(font=("Courier", 20))
     reporteria.pack(pady=10)
    
+ventanaMenu()

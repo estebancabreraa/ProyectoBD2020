@@ -13,7 +13,7 @@ def buscarArtista(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM artist WHERE name=%s;'''
@@ -51,7 +51,7 @@ def buscarArtista(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM artist WHERE name=%s;'''
@@ -89,7 +89,7 @@ def buscarAlbum(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM album WHERE title=%s;'''
@@ -132,7 +132,7 @@ def buscarAlbum(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM album WHERE title=%s;'''
@@ -176,7 +176,7 @@ def buscarAlbumNombre(idd):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM album WHERE albumid=%s;'''
@@ -219,7 +219,7 @@ def buscarAlbumMod(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM album WHERE title=%s;'''
@@ -262,7 +262,7 @@ def buscarCancion(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM track WHERE name=%s;'''
@@ -322,7 +322,7 @@ def buscarGeneroID(idd):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM genre WHERE genreid=%s;'''
@@ -360,7 +360,7 @@ def buscarGenero(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM genre WHERE name=%s;'''
@@ -401,7 +401,7 @@ def modificarArtista(idd, nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''UPDATE artist SET name =%s WHERE artistid=%s;'''
@@ -430,7 +430,7 @@ def modificarAlbum(idd, nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''UPDATE album SET title =%s WHERE albumid=%s;'''
@@ -460,7 +460,7 @@ def modificarCancion(idd, nombre, precio):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''UPDATE track SET name =%s, unitprice=%s WHERE trackid=%s;'''
@@ -489,7 +489,7 @@ def buscarGenero2(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT * FROM genre WHERE name=%s;'''
@@ -530,7 +530,7 @@ def eliminarArtista(idd, nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
 
     
@@ -562,7 +562,7 @@ def eliminarAlbum(idd):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''DELETE FROM album WHERE albumid=%s;'''
@@ -592,7 +592,7 @@ def eliminarCancion(idd):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''DELETE FROM track WHERE trackid=%s;'''
@@ -624,7 +624,7 @@ def insertarArtista(idd, nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''INSERT INTO artist(artistid, name) VALUES(%s, %s);'''
@@ -657,7 +657,7 @@ def insertarAlbum(idd, nombre, nombreArtista):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''INSERT INTO album(albumid, title, artistid) VALUES(%s, %s, %s);'''
@@ -703,7 +703,7 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''INSERT INTO track(trackid, name, albumid, mediatypeid, genreid, composer, milliseconds, bytes, unitprice, estado, colaborador) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'''
@@ -739,7 +739,7 @@ def inactivarCancion(nombre):
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''UPDATE track SET estado =%s WHERE name=%s;'''
