@@ -1,11 +1,23 @@
+import csv
 import psycopg2
 from psycopg2 import Error
 from random import randint
 from tkinter import messagebox
 
+lista = []
+
+def createCSV(filename):
+    nombreArchivo = open(filename, "w")
+    nombreArchivo.close()
+
+def listFile(lista, filename,lista2):
+    with open(filename, "w") as f:
+            writer = csv.writer(f)
+            writer.writerow(lista2) 
+            writer.writerows(lista)
+            
 def artistaAlbum():
-    try:
-       
+    try:  
         
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -21,26 +33,23 @@ order by count(artist1.name) desc LIMIT 5;
 '''
         
         cursor.execute(create_table_query)
-        
 
         result = cursor.fetchall()
 
-        
+        createCSV("artistaAlbum.csv")
+        listFile(result, "artistaAlbum.csv", ["album", "vendidos"])
         
         for row in result:
-            print("nombre =", row[0],)
-            print("albumes =" , row[1], "\n")
-            
+            print("Nombre =", row[0],)
+            print("Albumes =" , row[1], "\n")
         
-        connection.commit()
-        
-        
-        print(result)
+        connection.commit()                 
         
         messagebox.showinfo(message=result, title="Consulta")
     except (Exception, psycopg2.DatabaseError) as error :
         messagebox.showerror(message="No se encontro el producto.", title="Consulta fallida")
         print ("No se pudo realizar lo solicitado", error)
+        
     finally:
         #closing database connection.
             if(connection):
@@ -70,7 +79,8 @@ order by count(genre1.name) desc LIMIT 5
 
         result = cursor.fetchall()
 
-        
+        createCSV("cancionGenero.csv")
+        listFile(result, "cancionGenero.csv", ["Genero", "Canciones"])
         
         for row in result:
             print("Genero =", row[0],)
@@ -118,7 +128,8 @@ ORDER BY Cuenta desc;
 
         result = cursor.fetchall()
 
-        
+        createCSV("playlistDuracion.csv")
+        listFile(result, "playlistDuracion.csv", ["idPlaylist", "Nombre", "Duraciom"])
         
         for row in result:
             print("idPlaylist =", row[0],)
@@ -163,7 +174,8 @@ order by (track1.milliseconds) desc LIMIT 5;
 
         result = cursor.fetchall()
 
-        
+        createCSV("CancionMayorDuracion.csv")
+        listFile(result, "CancionMayorDuracion.csv", ["Artista", "Cancion", "Duracion"])
         
         for row in result:
             print("artista =", row[0],)
@@ -208,7 +220,8 @@ ORDER BY Canciones_Agregadas DESC LIMIT 5;
 
         result = cursor.fetchall()
 
-        
+        createCSV("usuariosTop.csv")
+        listFile(result, "usuariosTop.csv", ["Nombre", "Apellido", "Canciones Agregadas"])
         
         for row in result:
             print("Nombre =", row[0],)
@@ -255,7 +268,8 @@ ORDER BY AveragePerGenre DESC
 
         result = cursor.fetchall()
 
-        
+        createCSV("promedioGenero.csv")
+        listFile(result, "promedioGenero.csv", ["Genero", "Duracion Promedio"])
         
         for row in result:
             print("Genero =", row[0],)
@@ -300,7 +314,8 @@ order by count(artist1.name) desc
 
         result = cursor.fetchall()
 
-        
+        createCSV("playlistArtista.csv")
+        listFile(result, "playlistArtista.csv", ["Genero", "Total Artistas"])
         
         for row in result:
             print("Genero =", row[0],)
@@ -344,7 +359,8 @@ order by count(genre1.genreid) desc LIMIT 5
 
         result = cursor.fetchall()
 
-        
+        createCSV("diversidad.csv")
+        listFile(result, "diversidad.csv", ["Artista", "Genero"])
         
         for row in result:
             print("Artista =", row[0],)
