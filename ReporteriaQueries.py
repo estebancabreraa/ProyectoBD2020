@@ -11,7 +11,7 @@ def artistaAlbum():
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT artist1.name, count(artist1.name)
@@ -56,7 +56,7 @@ def CancionGenero():
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT genre1.name, count(genre1.name)
@@ -101,7 +101,7 @@ def playlistDuracion():
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT playlist.playlistid, playlist.name, SUM(track.milliseconds/1000) AS Cuenta
@@ -149,7 +149,7 @@ def CancionMayorDuracion():
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT artist1.name, track1.name, (track1.milliseconds/1000) AS Duracion
@@ -194,7 +194,7 @@ def usuariosTop():
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT customer1.firstname, customer1.lastname , COUNT (track1.colaborador) AS Canciones_Agregadas
@@ -239,7 +239,7 @@ def promedioGenero():
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT genre1.name, AVG((track1.milliseconds/1000)) AS AveragePerGenre
@@ -285,7 +285,7 @@ def playlistArtista():
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT playlist1.name, count(artist1.artistid)
@@ -330,7 +330,7 @@ def diversidad():
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
         
         create_table_query = '''SELECT artist1.name, count(DISTINCT track1.genreid) as generos

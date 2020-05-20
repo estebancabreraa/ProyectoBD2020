@@ -18,3 +18,11 @@ x = shopping.insert_one(mydict)
 
 for x in shopping.find(myquery):
   print(x)
+
+def insertarCarrito(idCliente, idTrack, subtotal):
+    mydict = {"idCart": idCliente, "idCliente", idCliente, "idTrack": idTrack, "subtotal": subtotal}
+    shopping.insert_one(mydict)
+
+def buscarCarrito(idCliente)
+    resultado = shopping.find({"idCliente": idCliente})
+    
