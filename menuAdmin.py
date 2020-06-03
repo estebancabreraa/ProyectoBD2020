@@ -10,6 +10,7 @@ from inactivar import *
 from buscar import *
 from reporteria import *
 from records import *
+from querys_mongo import *
 
 ################################################################################
 #                                    MENU                                      #
@@ -55,6 +56,12 @@ def ventanaMenu():
     records.config(font = ("Courier", 20))
     records.pack(pady = 10)
 
-    simulacion = tk.Button(menu, text = "Simulacion", command = "")
-    simulacion.config(font = ("Courier", 20))
-    simulacion.pack(pady = 10)
+    sim = tk.Button(menu, text = "Simulacion", command = simulacion)
+    sim.config(font = ("Courier", 20))
+    sim.pack(pady = 10)
+
+    vitacora = tk.Button(menu, text = "Vitacora", command = "")
+    vitacora.config(font = ("Courier", 20))
+    vitacora.pack(pady = 10)
+    
+ventanaMenu()
