@@ -64,4 +64,3 @@ def ventanaMenu():
     vitacora.config(font = ("Courier", 20))
     vitacora.pack(pady = 10)
     
-ventanaMenu()
