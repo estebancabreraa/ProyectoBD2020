@@ -46,6 +46,35 @@ def buscarCarritoG():
     resultado = list(shopping.find())
     return resultado
 
+def getCarrito(idCliente):
+    trackNames = []
+    tracks =[]
+    items = []
+    
+    myquery = {"idCliente": idCliente}
+
+    items = buscarCarrito(idCliente)
+
+    i = 0
+    for item in items:
+        tracks.append('{0}'.format(item['idTrack']))
+
+        trackName = buscarCancionID(tracks[i])
+        
+        trackNames.append(trackName)
+
+        i = i + 1
+    
+    resultado = list(shopping.find(myquery))
+    respuesta = []
+    i = 0
+    for item in resultado:
+        cadena = trackNames[i] + ' - {0}'.format(item['subtotal'])
+        respuesta.append(cadena)
+        i = i + 1
+        
+    return respuesta
+
 def buscarComprasG():
     resultado = list(compra.find())
     return resultado
@@ -79,7 +108,7 @@ def checkOut(idCliente):
         trackName = buscarCancionID(tracks[i])
         
         trackNames.append(trackName)
-        print(trackNames[0])
+
 
         i = i + 1
 
@@ -103,4 +132,5 @@ def verificarCompra(track):
         respuesta = True
     return respuesta
 
-    
+hola = getCarrito(1)
+print(hola)

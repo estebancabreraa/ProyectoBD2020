@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import psycopg2
 from psycopg2 import Error
+from checkout import *
 from querys import *
 from querys_mongo import *
 
@@ -37,7 +38,7 @@ def ventanaCompraCancion(tituloCancion):
     label15.config(font=("Courier", 44), pady=40)
     label15.pack()
 
-    label16 = tk.Label(compraCancion, text="MODIFICAR UNA CANCION", bg="LightGreen", fg="black")
+    label16 = tk.Label(compraCancion, text="COMPRAR UNA CANCION", bg="LightGreen", fg="black")
     label16.config(font=("Courier", 24))
     label16.pack(side=tk.TOP, anchor=tk.NW)
 
@@ -150,10 +151,14 @@ def ventanaCompraCancion(tituloCancion):
     #BOTONES
     registrarborrarFrame = tk.Frame(compraCancion, bg="LightGreen")
     
-    button1 = tk.Button(registrarborrarFrame, text="Comprar", bg="green", command=anadirCarrito)
+    button1 = tk.Button(registrarborrarFrame, text="Añadir al Carrito", bg="green", command=anadirCarrito)
     button1.config(font=("Courier", 20))
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
 
+
+    button2 = tk.Button(registrarborrarFrame, text="Check Out", bg="red", command=ventanaCheckout)
+    button2.config(font=("Courier", 20))
+    button2.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     
     registrarborrarFrame.pack(side=tk.TOP, anchor=tk.NW)
 
