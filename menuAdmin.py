@@ -59,6 +59,3 @@ def ventanaMenu():
     simulacion.config(font = ("Courier", 20))
     simulacion.pack(pady = 10)
 
-    
-   
-ventanaMenu()
