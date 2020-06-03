@@ -240,6 +240,140 @@ def buscarCancion(nombre):
         unitprice = 0
         estado = True
         colaborador = ""
+        modBy = ""
+        modField = ""
+        reproducciones = 0
+        
+        for row in result:
+            trackid = row[0]
+            name = row[1]
+            albumid = row[2]
+            mediatypeid = row[3]
+            genreid = row[4]
+            composer = row[5]
+            miliseconds = row[6]
+            bytess = row[7]
+            unitprice = row[8]
+            estado = row[9]
+            colaborador = row[10]
+            modBy = row[11]
+            modField = row[12]
+            reproducciones = row[13]
+
+        resultado = [trackid, name, albumid, mediatypeid, genreid, composer, miliseconds, bytess, unitprice, estado, colaborador, modBy, modField, reproducciones]
+        
+        connection.commit()
+
+        mensaje = "La cancion se encontro exitosamente."
+        
+        messagebox.showinfo(message=mensaje, title="Consulta")
+        print(result)
+    except (Exception, psycopg2.DatabaseError) as error :
+        messagebox.showerror(message="No se encontro la cancion.", title="Consulta fallida")
+        print (error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+    return resultado
+
+##
+
+def buscarCancionPorID(idd):
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto2")
+        cursor = connection.cursor()
+        
+        create_table_query = '''SELECT * FROM track WHERE trackid=%s;'''
+        
+        cursor.execute(create_table_query, (idd,))
+
+        result = cursor.fetchall()
+
+        trackid = ""
+        name = ""
+        albumid = ""
+        mediatypeid = ""
+        genreid = ""
+        composer = ""
+        miliseconds = ""
+        bytess = 0
+        unitprice = 0
+        estado = True
+        colaborador = ""
+        modBy = ""
+        modField = ""
+        reproducciones = 0
+        
+        for row in result:
+            trackid = row[0]
+            name = row[1]
+            albumid = row[2]
+            mediatypeid = row[3]
+            genreid = row[4]
+            composer = row[5]
+            miliseconds = row[6]
+            bytess = row[7]
+            unitprice = row[8]
+            estado = row[9]
+            colaborador = row[10]
+            modBy = row[11]
+            modField = row[12]
+            reproducciones = row[13]
+
+        resultado = [trackid, name, albumid, mediatypeid, genreid, composer, miliseconds, bytess, unitprice, estado, colaborador, modBy, modField, reproducciones]
+        
+        connection.commit()
+
+        mensaje = "La cancion se encontro exitosamente."
+        
+        messagebox.showinfo(message=mensaje, title="Consulta")
+        print(result)
+    except (Exception, psycopg2.DatabaseError) as error :
+        messagebox.showerror(message="No se encontro la cancion.", title="Consulta fallida")
+        print (error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+    return resultado
+
+##
+
+def buscarCancionID(idd):
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto2")
+        cursor = connection.cursor()
+        
+        create_table_query = '''SELECT * FROM track WHERE trackid=%s;'''
+        
+        cursor.execute(create_table_query, (idd,))
+
+        result = cursor.fetchall()
+
+        trackid = ""
+        name = ""
+        albumid = ""
+        mediatypeid = ""
+        genreid = ""
+        composer = ""
+        miliseconds = ""
+        bytess = 0
+        unitprice = 0
+        estado = True
+        colaborador = ""
         
         for row in result:
             trackid = row[0]
@@ -272,7 +406,7 @@ def buscarCancion(nombre):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-    return resultado
+    return resultado[1]
 
 def buscarGeneroID(idd):
     try:
@@ -440,6 +574,39 @@ def modificarCancion(idd, nombre, precio):
                 cursor.close()
                 connection.close()
                 print("PostgreSQL connection is closed")
+
+def modificarRepCancion(idd):
+    resultado = buscarCancionPorID(idd)
+    numRep = 0
+    numRep = resultado[13] + 1
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto2")
+        cursor = connection.cursor()
+        
+        create_table_query = '''UPDATE track SET rep =%s WHERE trackid=%s;'''
+        
+        cursor.execute(create_table_query, (numRep, idd,))            
+        
+        connection.commit()
+        
+        mensaje = "Cancion modificada con exito."
+        print(mensaje)
+        
+        messagebox.showinfo(message=mensaje, title="Consulta")
+    except (Exception, psycopg2.DatabaseError) as error :
+        messagebox.showerror(message="No se pudo modificar la cancion..", title="Consulta fallida")
+        print (error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+    
 
 def buscarGenero2(nombre):
     try:
@@ -656,6 +823,9 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
     colaborador = ""
     bytess = randint(100000, 9999999)
     milisegundos = randint(100000, 999999)
+    modBy = ""
+    modField = ""
+    rep = 0
     try:
         
         
@@ -667,9 +837,9 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
                                       database = "proyecto2")
         cursor = connection.cursor()
         
-        create_table_query = '''INSERT INTO track(trackid, name, albumid, mediatypeid, genreid, composer, milliseconds, bytes, unitprice, estado, colaborador) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'''
+        create_table_query = '''INSERT INTO track(trackid, name, albumid, mediatypeid, genreid, composer, milliseconds, bytes, unitprice, estado, colaborador, modified_by, modified_field, rep) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'''
         
-        cursor.execute(create_table_query, (idd, nombre, idAlbum, mediatypeid, idGenero, nombreArtista, milisegundos, bytess, precio, estado, colaborador,))        
+        cursor.execute(create_table_query, (idd, nombre, idAlbum, mediatypeid, idGenero, nombreArtista, milisegundos, bytess, precio, estado, colaborador, modBy, modField, rep,))        
        
         
         connection.commit()

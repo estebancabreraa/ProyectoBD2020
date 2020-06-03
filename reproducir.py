@@ -3,7 +3,10 @@ from tkinter import messagebox
 import psycopg2
 from psycopg2 import Error
 from random import randint
-from compraCancion import *
+from querys_mongo import *
+import webbrowser
+from tkinter import messagebox
+
 
 ################################################################################
 #                                    Reproducir                                #
@@ -28,7 +31,18 @@ def ventanaReproduccion():
     tituloCancionEdit = tk.Text(buscarCancionFrame, width=30, height=1)
     tituloCancionEdit.pack(side=tk.LEFT)
 
-    button1 = tk.Button(buscarCancionFrame, text="Reproducir", bg="green", command="")
+    mensaje = ""
+    def reproducirCancion():
+        track = tituloCancionEdit.get("1.0",'end-1c')
+        habilitada = False
+        habilitada = verificarCompra(track)
+        if habilitada:
+            webbrowser.open('https://www.youtube.com/watch?v=S-Abebn5kpM', new=2)
+        else:
+            mensaje = "No se puede reproducir la cancion porque usted no la ha comprado."
+            messagebox.showinfo(message=mensaje, title="Reproduccion")
+        
+    button1 = tk.Button(buscarCancionFrame, text="Reproducir", bg="green", command=reproducirCancion)
     button1.config(font=("Courier", 15))
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     buscarCancionFrame.pack(side=tk.TOP, anchor=tk.NW)
