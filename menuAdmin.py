@@ -9,6 +9,7 @@ from regCancion import *
 from inactivar import *
 from buscar import *
 from reporteria import *
+from records import *
 
 ################################################################################
 #                                    MENU                                      #
@@ -21,13 +22,9 @@ def ventanaMenu():
     menu.configure(background="LightGreen")
 
     #TITULO
-    labelMenu = tk.Label(menu, text="Menu", bg="LightGreen", fg="black")
-    labelMenu.config(font=("Century", 44), pady=20)
+    labelMenu = tk.Label(menu, text="Menu: Administrador", bg="LightGreen", fg="black")
+    labelMenu.config(font=("Century", 44), pady=15)
     labelMenu.pack()
-
-    labelMenu1 = tk.Label(menu, text="Administrador", bg="LightGreen", fg="black")
-    labelMenu1.config(font=("Century", 20), pady=5)
-    labelMenu1.pack()
 
     #Buttons
     regArtista = tk.Button(menu, text="Registrar Artista", command=ventanaRegArtista)
@@ -53,5 +50,15 @@ def ventanaMenu():
     reporteria = tk.Button(menu, text="Reporteria", command=ventanaReporteria)
     reporteria.config(font=("Courier", 20))
     reporteria.pack(pady=10)
+
+    records = tk.Button(menu, text = "Records", command = ventanaRecords)
+    records.config(font = ("Courier", 20))
+    records.pack(pady = 10)
+
+    simulacion = tk.Button(menu, text = "Simulacion", command = "")
+    simulacion.config(font = ("Courier", 20))
+    simulacion.pack(pady = 10)
+
+    
    
 ventanaMenu()

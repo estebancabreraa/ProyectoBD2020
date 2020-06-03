@@ -91,4 +91,16 @@ def ventanaBuscar():
     button3.config(font=("Courier", 20))
     button3.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
 
+
     buscarArtistaFrame.pack(side=tk.TOP, anchor=tk.NW)
+    
+    #reproduccion
+
+    rep = tk.Frame(buscar, bg="LightGreen")
+
+    button4 = tk.Button(rep, text="Reproducir", bg="green", command=buscarCancion)
+    button4.config(font=("Courier", 20))
+    button4.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
+    
+    rep.pack(side=tk.TOP, anchor=tk.NW)
+
