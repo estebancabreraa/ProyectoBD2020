@@ -36,8 +36,8 @@ order by count(artist1.name) desc LIMIT 5;
 
         result = cursor.fetchall()
 
-        createCSV("artistaAlbum.csv")
-        listFile(result, "artistaAlbum.csv", ["album", "vendidos"])
+        createCSV("1.artistaAlbum.csv")
+        listFile(result, "1.artistaAlbum.csv", ["album", "vendidos"])
         
         for row in result:
             print("Nombre =", row[0],)
@@ -79,8 +79,8 @@ order by count(genre1.name) desc LIMIT 5
 
         result = cursor.fetchall()
 
-        createCSV("cancionGenero.csv")
-        listFile(result, "cancionGenero.csv", ["Genero", "Canciones"])
+        createCSV("2.cancionGenero.csv")
+        listFile(result, "2.cancionGenero.csv", ["Genero", "Canciones"])
         
         for row in result:
             print("Genero =", row[0],)
@@ -128,8 +128,8 @@ ORDER BY Cuenta desc;
 
         result = cursor.fetchall()
 
-        createCSV("playlistDuracion.csv")
-        listFile(result, "playlistDuracion.csv", ["idPlaylist", "Nombre", "Duraciom"])
+        createCSV("3.playlistDuracion.csv")
+        listFile(result, "3.playlistDuracion.csv", ["idPlaylist", "Nombre", "Duraciom"])
         
         for row in result:
             print("idPlaylist =", row[0],)
@@ -174,8 +174,8 @@ order by (track1.milliseconds) desc LIMIT 5;
 
         result = cursor.fetchall()
 
-        createCSV("CancionMayorDuracion.csv")
-        listFile(result, "CancionMayorDuracion.csv", ["Artista", "Cancion", "Duracion"])
+        createCSV("4.CancionMayorDuracion.csv")
+        listFile(result, "4.CancionMayorDuracion.csv", ["Artista", "Cancion", "Duracion"])
         
         for row in result:
             print("artista =", row[0],)
@@ -220,8 +220,8 @@ ORDER BY Canciones_Agregadas DESC LIMIT 5;
 
         result = cursor.fetchall()
 
-        createCSV("usuariosTop.csv")
-        listFile(result, "usuariosTop.csv", ["Nombre", "Apellido", "Canciones Agregadas"])
+        createCSV("5.usuariosTop.csv")
+        listFile(result, "5.usuariosTop.csv", ["Nombre", "Apellido", "Canciones Agregadas"])
         
         for row in result:
             print("Nombre =", row[0],)
@@ -268,8 +268,8 @@ ORDER BY AveragePerGenre DESC
 
         result = cursor.fetchall()
 
-        createCSV("promedioGenero.csv")
-        listFile(result, "promedioGenero.csv", ["Genero", "Duracion Promedio"])
+        createCSV("6.promedioGenero.csv")
+        listFile(result, "6.promedioGenero.csv", ["Genero", "Duracion Promedio"])
         
         for row in result:
             print("Genero =", row[0],)
@@ -314,8 +314,8 @@ order by count(artist1.name) desc
 
         result = cursor.fetchall()
 
-        createCSV("playlistArtista.csv")
-        listFile(result, "playlistArtista.csv", ["Genero", "Total Artistas"])
+        createCSV("7.playlistArtista.csv")
+        listFile(result, "7.playlistArtista.csv", ["Genero", "Total Artistas"])
         
         for row in result:
             print("Genero =", row[0],)
@@ -359,8 +359,8 @@ order by count(genre1.genreid) desc LIMIT 5
 
         result = cursor.fetchall()
 
-        createCSV("diversidad.csv")
-        listFile(result, "diversidad.csv", ["Artista", "Genero"])
+        createCSV("8.diversidad.csv")
+        listFile(result, "8.diversidad.csv", ["Artista", "Genero"])
         
         for row in result:
             print("Artista =", row[0],)
