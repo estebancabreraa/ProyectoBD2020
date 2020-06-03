@@ -99,9 +99,8 @@ def verificarCompra(track):
     registro = list(compra.find({},{"idCliente": 1, "idTrack": idTrack}))
     pprint(len(registro))
     if len(registro) > 0:
+        modificarRepCancion(idTrack)
         respuesta = True
     return respuesta
 
-
-verificarCompra('Quiere Evitarme')
     
