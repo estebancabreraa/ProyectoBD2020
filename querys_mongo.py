@@ -158,9 +158,9 @@ def simulacion():
 
         reproducciones = randint(1, 20)
         
-        reproduccionesMessage = "Clinete # " + str(clientID) + ", " + cliente[1] + " " + cliente[2] + ", reprodujo la cancion " + song[1] + " " + str(reproducciones) + " veces."
+        reproduccionesMessage = "Cliente # " + str(clientID) + ", " + cliente[1] + " " + cliente[2] + ", reprodujo la cancion " + song[1] + " " + str(reproducciones) + " veces."
         
-        compraMessage = "Clinete # " + str(clientID) + ", " + cliente[1] + " " + cliente[2] + ", compro la cancion " + song[1] + "."
+        compraMessage = "Cliente # " + str(clientID) + ", " + cliente[1] + " " + cliente[2] + ", compro la cancion " + song[1] + "."
         
         compras.append(compraMessage)
 
@@ -169,4 +169,4 @@ def simulacion():
     generarReporte(compras, repro)
 
 
-simulacion()
+
