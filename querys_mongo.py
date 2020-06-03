@@ -31,7 +31,7 @@ def insertarCompra(idCliente, tracks, subtotales, total, trackNames):
     subtotalList = subtotales
     
     for i in range(0, len(tracks)):
-        mydict = {"idCompra": idCompra, "idCliente": idCliente, "date": date, "idTrack": tracks[i], "total": subtotales[i]}
+        mydict = {"idCompra": idCompra, "idCliente": idCliente, "date": date, "idTrack": tracks[i], "total": str(subtotales[i])}
         compra.insert_one(mydict)
 
     crearFactura(idCompra, idCliente, trackList, subtotalList, total, trackNames)
@@ -91,3 +91,17 @@ def checkOut(idCliente):
     
     eliminarCarrito(idCliente)
 
+def verificarCompra(track):
+    respuesta = False
+    trackInfo = buscarCancion(track)
+    idTrack = trackInfo[0]
+    myquery = {"idCliente": 1, "idTrack": idTrack} 
+    registro = list(compra.find({},{"idCliente": 1, "idTrack": idTrack}))
+    pprint(len(registro))
+    if len(registro) > 0:
+        respuesta = True
+    return respuesta
+
+
+verificarCompra('Quiere Evitarme')
+    
