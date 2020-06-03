@@ -58,4 +58,3 @@ def ventanaMenu():
     simulacion = tk.Button(menu, text = "Simulacion", command = "")
     simulacion.config(font = ("Courier", 20))
     simulacion.pack(pady = 10)
-

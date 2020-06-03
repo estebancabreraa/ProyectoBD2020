@@ -7,6 +7,49 @@ from tkinter import messagebox
 ################################################################################
 #                                         BUSCAR                               #
 ################################################################################
+
+def getClientInfo(idd):
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto2")
+        cursor = connection.cursor()
+        
+        create_table_query = '''SELECT * FROM customer WHERE customerid=%s;'''
+        
+        cursor.execute(create_table_query, (idd,))
+
+        result = cursor.fetchall()
+
+        customerid = ""
+        fname = ""
+        lname = ""
+        
+        for row in result:
+            customerid = row[0]
+            fname = row[1]
+            lname = row[2]
+
+        resultado = [customerid, fname, lname]
+        
+        connection.commit()
+
+        mensaje = "La cancion se encontro exitosamente."
+        
+      
+        print(result)
+    except (Exception, psycopg2.DatabaseError) as error :
+        print (error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+    return resultado
+
 def buscarArtista(nombre):
     try:
         connection = psycopg2.connect(user = "postgres",
@@ -281,6 +324,71 @@ def buscarCancion(nombre):
 
 ##
 
+def getSongInfo(idd):
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto2")
+        cursor = connection.cursor()
+        
+        create_table_query = '''SELECT * FROM track WHERE trackid=%s;'''
+        
+        cursor.execute(create_table_query, (idd,))
+
+        result = cursor.fetchall()
+
+        trackid = ""
+        name = ""
+        albumid = ""
+        mediatypeid = ""
+        genreid = ""
+        composer = ""
+        miliseconds = ""
+        bytess = 0
+        unitprice = 0
+        estado = True
+        colaborador = ""
+        modBy = ""
+        modField = ""
+        reproducciones = 0
+        
+        for row in result:
+            trackid = row[0]
+            name = row[1]
+            albumid = row[2]
+            mediatypeid = row[3]
+            genreid = row[4]
+            composer = row[5]
+            miliseconds = row[6]
+            bytess = row[7]
+            unitprice = row[8]
+            estado = row[9]
+            colaborador = row[10]
+            modBy = row[11]
+            modField = row[12]
+            reproducciones = row[13]
+
+        resultado = [trackid, name, unitprice]
+        
+        connection.commit()
+
+        mensaje = "La cancion se encontro exitosamente."
+        
+        print(result)
+    except (Exception, psycopg2.DatabaseError) as error :
+        print (error)
+    finally:
+        #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+    return resultado
+
+##
+
 def buscarCancionPorID(idd):
     try:
         connection = psycopg2.connect(user = "postgres",
@@ -345,9 +453,7 @@ def buscarCancionPorID(idd):
                 connection.close()
                 print("PostgreSQL connection is closed")
     return resultado
-
 ##
-
 def buscarCancionID(idd):
     try:
         connection = psycopg2.connect(user = "postgres",
@@ -394,10 +500,9 @@ def buscarCancionID(idd):
 
         mensaje = "La cancion se encontro exitosamente."
         
-        messagebox.showinfo(message=mensaje, title="Consulta")
         print(result)
     except (Exception, psycopg2.DatabaseError) as error :
-        messagebox.showerror(message="No se encontro la cancion.", title="Consulta fallida")
+    
         print (error)
     finally:
         #closing database connection.

@@ -5,6 +5,7 @@ from pprint import pprint
 from random import randint
 from factura import *
 from querys import *
+from reportesemanal import *
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 
@@ -132,5 +133,40 @@ def verificarCompra(track):
         respuesta = True
     return respuesta
 
-hola = getCarrito(1)
-print(hola)
+def simulacion():
+    transacciones = randint(50, 150)
+    compras = []
+    repro = []
+
+    for i in range(0, transacciones):
+        tracks = []
+        subtotales = []
+        trackNames = []
+        
+        clientID = randint(1, 61)
+        songID  = randint(1, 1000)
+
+        cliente = getClientInfo(clientID)
+        song = getSongInfo(songID)
+
+        tracks.append(song[0])
+        subtotales.append(song[2])
+
+        trackNames.append(song[1])
+        
+        insertarCompra(clientID, tracks, subtotales, song[2], trackNames)
+
+        reproducciones = randint(1, 20)
+        
+        reproduccionesMessage = "Clinete # " + str(clientID) + ", " + cliente[1] + " " + cliente[2] + ", reprodujo la cancion " + song[1] + " " + str(reproducciones) + " veces."
+        
+        compraMessage = "Clinete # " + str(clientID) + ", " + cliente[1] + " " + cliente[2] + ", compro la cancion " + song[1] + "."
+        
+        compras.append(compraMessage)
+
+        repro.append(reproduccionesMessage)
+
+    generarReporte(compras, repro)
+
+
+simulacion()
