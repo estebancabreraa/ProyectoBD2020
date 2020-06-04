@@ -132,7 +132,7 @@ def verificarCompra(track):
     idTrack = trackInfo[0]
     myquery = {"idCliente": 1, "idTrack": idTrack}
     #{"$and": [{"idCliente": {"$eq": 1}}, {"idTrack": {"$eq": idTrack}}]}
-    registro = list(compra.find(myquery))
+    registro = list(compra.find({"$or": [{"idCliente": {"$eq": 1}}, {"idTrack": {"$eq": idTrack}}]} ))
     if len(registro) > 0:
         modificarRepCancion(idTrack)
         respuesta = True
@@ -174,5 +174,5 @@ def simulacion():
     generarReporte(compras, repro)
 
 
-print(verificarCompra('El ultimo'))
+
 
