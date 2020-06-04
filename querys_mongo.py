@@ -80,6 +80,11 @@ def buscarComprasG():
     resultado = list(compra.find())
     return resultado
 
+def buscarCompras(idCliente):
+    myquery = {"idCliente": idCliente}
+    resultado = list(compra.find(myquery))
+    return resultado
+
 def eliminarCarrito(idCliente):
     myquery = {"idCart": idCliente}
     shopping.delete_many(myquery)
@@ -125,9 +130,9 @@ def verificarCompra(track):
     respuesta = False
     trackInfo = buscarCancion(track)
     idTrack = trackInfo[0]
-    myquery = {"idCliente": 1, "idTrack": idTrack} 
-    registro = list(compra.find({},{"idCliente": 1, "idTrack": idTrack}))
-    pprint(len(registro))
+    myquery = {"idCliente": 1, "idTrack": idTrack}
+    #{"$and": [{"idCliente": {"$eq": 1}}, {"idTrack": {"$eq": idTrack}}]}
+    registro = list(compra.find(myquery))
     if len(registro) > 0:
         modificarRepCancion(idTrack)
         respuesta = True
@@ -169,4 +174,5 @@ def simulacion():
     generarReporte(compras, repro)
 
 
+print(verificarCompra('El ultimo'))
 

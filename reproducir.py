@@ -47,4 +47,3 @@ def ventanaReproduccion():
     button1.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     buscarCancionFrame.pack(side=tk.TOP, anchor=tk.NW)
 
-ventanaReproduccion()
