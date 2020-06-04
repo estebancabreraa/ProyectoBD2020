@@ -848,7 +848,7 @@ def eliminarCancion(idd):
 ################################################################################
 #                                     INSERTAR                                 #
 ################################################################################
-def insertarArtista(idd, nombre):
+def insertarArtista(idd, nombre, campo, email):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -857,9 +857,9 @@ def insertarArtista(idd, nombre):
                                       database = "proyecto2")
         cursor = connection.cursor()
         
-        create_table_query = '''INSERT INTO artist(artistid, name) VALUES(%s, %s);'''
+        create_table_query = '''INSERT INTO artist(artistid, name, modified_by, modified_field) VALUES(%s, %s, %s, %s);'''
         
-        cursor.execute(create_table_query, (idd, nombre,))        
+        cursor.execute(create_table_query, (idd, nombre, email, campo,))        
        
         
         connection.commit()
@@ -890,9 +890,9 @@ def insertarAlbum(idd, nombre, nombreArtista):
                                       database = "proyecto2")
         cursor = connection.cursor()
         
-        create_table_query = '''INSERT INTO album(albumid, title, artistid) VALUES(%s, %s, %s);'''
+        create_table_query = '''INSERT INTO album(albumid, title, artistid, modified_by, modified_field) VALUES(%s, %s, %s, %s, %s);'''
         
-        cursor.execute(create_table_query, (idd, nombre, idArtista,))        
+        cursor.execute(create_table_query, (idd, nombre, idArtista, email, campo,))        
        
         
         connection.commit()
@@ -911,7 +911,7 @@ def insertarAlbum(idd, nombre, nombreArtista):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
+def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio, campo, email):
     idAlbum = 1
     bAlbum = buscarAlbum(nombreAlbum)
     idAlbum = bAlbum
@@ -944,7 +944,7 @@ def insertarCancion(idd, nombre, nombreAlbum, nombreArtista, genero, precio):
         
         create_table_query = '''INSERT INTO track(trackid, name, albumid, mediatypeid, genreid, composer, milliseconds, bytes, unitprice, estado, colaborador, modified_by, modified_field, rep) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'''
         
-        cursor.execute(create_table_query, (idd, nombre, idAlbum, mediatypeid, idGenero, nombreArtista, milisegundos, bytess, precio, estado, colaborador, modBy, modField, rep,))        
+        cursor.execute(create_table_query, (idd, nombre, idAlbum, mediatypeid, idGenero, nombreArtista, milisegundos, bytess, precio, estado, colaborador, email, campo, rep,))        
        
         
         connection.commit()
