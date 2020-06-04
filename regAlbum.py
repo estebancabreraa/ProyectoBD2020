@@ -88,8 +88,10 @@ def ventanaRegAlbum():
         idAlbum = idEdit.get("1.0",'end-1c')
         titulo = tituloEdit.get("1.0",'end-1c')
         artista = artistaEdit.get("1.0",'end-1c')
+        campo = campo2.get("1.0",'end-1c')
+        emailV = emailEd.get("1.0",'end-1c')
 
-        insertarAlbum(idAlbum, titulo, artista)
+        insertarAlbum(idAlbum, titulo, artista, campo, emailV)
         
         borrarCampos2()
 

@@ -74,8 +74,10 @@ def ventanaRegArtista():
     def registrarArtista():
         idArtista = idEdit.get("1.0",'end-1c')
         nombreArtista = nombreEdit.get("1.0",'end-1c')
+        campo = campo2.get("1.0",'end-1c')
+        emailV = emailEd.get("1.0",'end-1c')
 
-        insertarArtista(idArtista, nombreArtista)
+        insertarArtista(idArtista, nombreArtista, campo, emailV)
         
         borrarCampos1()
 

@@ -131,8 +131,10 @@ def ventanaRegCancion():
         artista = artistaEdit.get("1.0",'end-1c')
         genero = generoEdit.get("1.0",'end-1c')
         precio = precioEdit.get("1.0",'end-1c')
+        campo = campo2.get("1.0",'end-1c')
+        emailV = emailEd.get("1.0",'end-1c')
 
-        insertarCancion(idCancion, titulo, tituloAlbum, artista, genero, precio)
+        insertarCancion(idCancion, titulo, tituloAlbum, artista, genero, precio, campo, emailV)
         
         borrarCampos3()
 
