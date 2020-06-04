@@ -662,7 +662,7 @@ def modificarCancion(idd, nombre, precio, campo, email):
         
         create_table_query = '''UPDATE track SET name =%s, unitprice=%s,  modified_by=%s, modified_field=%s WHERE trackid=%s;'''
         
-        cursor.execute(create_table_query, (nombre, precio, , email, campo, idd,))            
+        cursor.execute(create_table_query, (nombre, precio, email, campo, idd,))            
         
         connection.commit()
         
