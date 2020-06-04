@@ -31,7 +31,7 @@ def ventanaRecords():
         date.configure(state = "readonly")
         date2. configure(state = "readonly")
         usuario.configure(state = "disabled")
-        combobox2.configure(state = "disabled")
+        combobox2.configure(state = "readonly")
     def q4():
         date.configure(state = "disabled")
         date2. configure(state = "disabled")
@@ -142,7 +142,7 @@ def ventanaRecords():
             ventasArtista(inicio, final, numero)
             
         elif(query == 2):
-            ventasGenero(inicio, final)
+            ventasGenero(inicio, final, numero)
 
         elif(query == 3):
             masRep(numero, nombre)
@@ -160,4 +160,3 @@ def ventanaRecords():
     label6.pack(side=tk.TOP)
 
     records.mainloop()
- 

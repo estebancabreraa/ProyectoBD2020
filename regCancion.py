@@ -152,4 +152,3 @@ def ventanaRegCancion():
     registrarborrarFrame.pack(side=tk.TOP, anchor=tk.NW)
 
 
-

@@ -71,7 +71,7 @@ def ventasArtista(inicio, final, cantidad):
             
             create_table_query = '''SELECT invoice1.invoicedate, artist1.name, invoiceline1.trackid, SUM(invoice1.total) as totalVentas
 FROM album album1 join artist artist1 on album1.artistid = artist1.artistid join invoiceline invoiceline1 on invoiceline1.trackid = album1.albumid join invoice invoice1 on invoiceline1.invoiceid = invoice1.invoiceid
-WHERE invoicedate > '''+ "'" + inicio + "'" + ''' and invoicedate < '''+ "'" + final + "'" + ''' AND invoice1.total IS NOT NULL
+WHERE invoicedate > '''+ "'" + inicio + "'" + ''' and invoicedate < '''+ "'" + final + "'" + ''' and invoice1.total IS NOT NULL
 GROUP BY artist1.name, invoiceline1.trackid, invoice1.invoicedate
 ORDER BY totalVentas DESC
 LIMIT ''' + cantidad 
@@ -104,7 +104,7 @@ LIMIT ''' + cantidad
                     connection.close()
                     print("PostgreSQL connection is closed")
 
-def ventasGenero(inicio, final):
+def ventasGenero(inicio, final, cantidad):
         try:  
         
             connection = psycopg2.connect(user = "postgres",
@@ -114,11 +114,12 @@ def ventasGenero(inicio, final):
                                           database = "proyecto2")
             cursor = connection.cursor()
             
-            create_table_query = '''SELECT invoice1.invoicedate, genre1.name, invoiceline1.trackid, SUM(invoice1.total) as totalVentas
-FROM genre genre1 join track track1 on genre1.genreid = track1.trackid join invoiceline invoiceline1 on invoiceline1.trackid =genre1.genreid join invoice invoice1 on invoiceline1.invoiceid = invoice1.invoiceid
-WHERE invoicedate > '''+ "'" + inicio + "'" + ''' and invoicedate < '''+ "'" + final + "'" + '''
-GROUP BY genre1.name, invoiceline1.trackid, invoice1.invoicedate
-ORDER BY totalVentas DESC''' 
+            create_table_query = '''SELECT invoice1.invoicedate, genre1.name, invoiceline1.trackid, track1.genreid, sum(invoice1.total) as totalVentas
+FROM genre genre1 join track track1 on genre1.genreid = track1.genreid join invoiceline invoiceline1 on invoiceline1.trackid =track1.trackid join invoice invoice1 on invoiceline1.invoiceid = invoice1.invoiceid
+WHERE invoicedate > '''+ "'" + inicio + "'" + ''' and invoicedate < '''+ "'" + final + "'" + ''' and invoice1.total IS NOT NULL
+GROUP BY genre1.name, invoiceline1.trackid, invoice1.invoicedate, track1.genreid
+ORDER BY totalVentas DESC
+LIMIT ''' + cantidad 
             
             cursor.execute(create_table_query)
 

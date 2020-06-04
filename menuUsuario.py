@@ -45,3 +45,7 @@ def ventanaMenuUsuario():
     buscar = tk.Button(menu, text="Buscar", command=ventanaBuscar)
     buscar.config(font=("Courier", 20))
     buscar.pack(pady=10, ipadx=8)
+
+    recomendacion = tk.Button(menu, text="Buscar", command="")
+    recomendacion.config(font=("Courier", 20))
+    recomendacion.pack(pady=10, ipadx=8)
