@@ -60,7 +60,7 @@ def reco():
     label5 = tk.Label(cancionFr, text="Genero:", font=("Courier", 13), bg="LightGreen", fg="black")
     label5.pack(side=tk.LEFT, ipady = 7)
 
-    combobox2 = ttk.Combobox(cancionFr, width=10, values = ["Aerosmith", "Camila Cabello", "Metallica", "Queen", "Kiss"], state = "readonly")
+    combobox2 = ttk.Combobox(cancionFr, width=10, values = ["Aerosmith", "Camila Cabello", "Metallica", "Queen", "Kiss", "Incognito", "Olodum", "Skank", "Lost", "U2"], state = "readonly")
     combobox2.pack(side = tk.LEFT)
     combobox2.current(0)
     
@@ -82,3 +82,4 @@ def reco():
     regArtista.pack()
 
     venMain.mainloop()
+reco()
