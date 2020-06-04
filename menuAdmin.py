@@ -14,6 +14,7 @@ from querys_mongo import *
 from comprar import *
 from checkout import *
 from reproducir import *
+from recomendacion import *
 
 ################################################################################
 #                                    MENU                                      #
@@ -52,37 +53,47 @@ def ventanaMenu():
     inactivar.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     f1.pack(side=tk.TOP)
 
-    buscar = tk.Button(menu, text="Buscar", command=ventanaBuscar)
+    f2 = tk.Frame(menu, bg = "LightGreen")
+    buscar = tk.Button(f2, text="Buscar", command=ventanaBuscar)
     buscar.config(font=("Courier", 20))
-    buscar.pack(pady=10, ipadx=8)
+    buscar.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
 
-    comprar = tk.Button(menu, text="Comprar", command=ventanaComprar)
+    comprar = tk.Button(f2, text="Comprar", command=ventanaComprar)
     comprar.config(font=("Courier", 20))
-    comprar.pack(pady=10, ipadx=8)
+    comprar.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
+    f2.pack(side=tk.TOP)
 
-    checko = tk.Button(menu, text="Check out", command=ventanaCheckout)
+    f3 = tk.Frame(menu, bg = "LightGreen")
+    checko = tk.Button(f3, text="Check out", command=ventanaCheckout)
     checko.config(font=("Courier", 20))
-    checko.pack(pady=10, ipadx=8)
+    checko.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
 
-    reproducir = tk.Button(menu, text="Reproducir", command=ventanaReproduccion)
+    reproducir = tk.Button(f3, text="Reproducir", command=ventanaReproduccion)
     reproducir.config(font=("Courier", 20))
-    reproducir.pack(pady=10, ipadx=8)
+    reproducir.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
+    f3.pack(side=tk.TOP)
 
-    reporteria = tk.Button(menu, text="Reporteria", command=ventanaReporteria)
+    f4 = tk.Frame(menu, bg = "LightGreen")
+    reporteria = tk.Button(f4, text="Reporteria", command=ventanaReporteria)
     reporteria.config(font=("Courier", 20))
-    reporteria.pack(pady=10)
+    reporteria.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
 
-    records = tk.Button(menu, text = "Records", command = ventanaRecords)
+    records = tk.Button(f4, text = "Records", command = ventanaRecords)
     records.config(font = ("Courier", 20))
-    records.pack(pady = 10)
+    records.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
+    f4.pack(side=tk.TOP)
 
-    sim = tk.Button(menu, text = "Simulacion", command = simulacion)
+    f5 = tk.Frame(menu, bg = "LightGreen")
+    sim = tk.Button(f5, text = "Simulacion", command = simulacion)
     sim.config(font = ("Courier", 20))
-    sim.pack(pady = 10)
+    sim.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
 
-    bitacora = tk.Button(menu, text = "Bitacora", command = listFile)
-    bitacora.config(font = ("Courier", 20))
-    bitacora.pack(pady = 10)
+    bit = tk.Button(f5, text = "Bitacora", command = bitacora)
+    bit.config(font = ("Courier", 20))
+    bit.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
+    f5.pack(side=tk.TOP)
 
-
-
+    re = tk.Button(menu, text = "Recomendacion", command = reco)
+    re.config(font = ("Courier", 20))
+    re.pack(pady = 10)
+    menu.mainloop()

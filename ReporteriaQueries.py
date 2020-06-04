@@ -381,3 +381,47 @@ order by count(genre1.genreid) desc LIMIT 5
                 cursor.close()
                 connection.close()
                 print("PostgreSQL connection is closed")
+
+def bitacora():
+    try:
+       
+        
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "123456",
+                                      host = "127.0.0.1",
+                                      port = "5433",
+                                      database = "proyecto2")
+        cursor = connection.cursor()
+        
+        create_table_query = '''select * from bitacora'''
+        
+        cursor.execute(create_table_query)
+        
+
+        result = cursor.fetchall()
+
+        createCSV("bitacora.csv")
+        listFile(result, "bitacora.csv", ["date", "hour", "usuario", "tipo modificacion", "campo", "tabla"])
+        
+        for row in result:
+            print("date =", row[0],)
+            print("hour =" , row[1], )
+            print("user =" , row[2], )
+            print("type =" , row[3], )
+            print("field =" , row[4], )
+            print("table =" , row[5], )
+        
+        connection.commit()
+        
+        
+        print(result)
+    except (Exception, psycopg2.DatabaseError) as error :
+        messagebox.showerror(message="No se encontro el producto.", title="Consulta fallida")
+        print ("No se pudo realizar lo solicitado", error)
+    finally:
+        if(connection):
+            cursor.close()
+            connection.close()
+            print("PostgreSQL connection is closed")
+
+

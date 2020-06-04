@@ -2,11 +2,13 @@ import tkinter as tk
 from tkinter import messagebox
 from random import randint
 from tkinter import Entry
+from tkinter import ttk
 import psycopg2
 from psycopg2 import Error
-from menuAdmin import *
 from reporteria import *
-from menuUsuario import *
+from ReporteriaQueries import *
+from tkcalendar import *
+from recordsQueries import *
 
 def recomendacion(artista):
     try:
@@ -42,8 +44,7 @@ ORDER BY track1.rep DESC'''
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-def ventanaRecomendacion():
-    
+def reco():
     venMain = tk.Tk()
     venMain.title("Descubrimiento Semanal")
     venMain.geometry("800x700")
@@ -70,7 +71,6 @@ def ventanaRecomendacion():
 
     genero = combobox2.current()
         
-
     def geti():
         artista = combobox2.get()
         ar = str(artista)
@@ -82,4 +82,3 @@ def ventanaRecomendacion():
     regArtista.pack()
 
     venMain.mainloop()
-ventanaRecomendacion()
