@@ -68,4 +68,5 @@ def ventanaMenu():
     bitacora = tk.Button(menu, text = "Bitacora", command = listFile)
     bitacora.config(font = ("Courier", 20))
     bitacora.pack(pady = 10)
-  
+    
+
