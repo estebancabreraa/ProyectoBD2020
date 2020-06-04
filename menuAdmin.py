@@ -22,27 +22,32 @@ def ventanaMenu():
     menu.geometry("800x700")
     menu.configure(background="LightGreen")
 
+    
     #TITULO
     labelMenu = tk.Label(menu, text="Menu: Administrador", bg="LightGreen", fg="black")
     labelMenu.config(font=("Century", 44), pady=15)
     labelMenu.pack()
 
     #Buttons
-    regArtista = tk.Button(menu, text="Registrar Artista", command=ventanaRegArtista)
+    emailF = tk.Frame(menu, bg = "LightGreen")
+    regArtista = tk.Button(emailF, text="Registrar Artista", command=ventanaRegArtista)
     regArtista.config(font=("Courier", 20))
-    regArtista.pack(pady=10, ipadx=8)
+    regArtista.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
 
-    regAlbum = tk.Button(menu, text="Registrar Album", command=ventanaRegAlbum)
+    regAlbum = tk.Button(emailF, text="Registrar Album", command=ventanaRegAlbum)
     regAlbum.config(font=("Courier", 20))
-    regAlbum.pack(pady=10)
+    regAlbum.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
+    emailF.pack(side=tk.TOP)
 
-    regCancion = tk.Button(menu, text="Registrar Cancion", command=ventanaRegCancion)
+    f1 = tk.Frame(menu, bg = "LightGreen")
+    regCancion = tk.Button(f1, text="Registrar Cancion", command=ventanaRegCancion)
     regCancion.config(font=("Courier", 20))
-    regCancion.pack(pady=10)
+    regCancion.pack(side=tk.LEFT, padx=20, pady=10, ipadx=10)
 
-    inactivar = tk.Button(menu, text="Inactivar Cancion", command=ventanaInactivarCancion)
+    inactivar = tk.Button(f1, text="Inactivar Cancion", command=ventanaInactivarCancion)
     inactivar.config(font=("Courier", 20))
-    inactivar.pack(pady=10)
+    inactivar.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
+    f1.pack(side=tk.TOP)
 
     buscar = tk.Button(menu, text="Buscar", command=ventanaBuscar)
     buscar.config(font=("Courier", 20))
@@ -60,8 +65,8 @@ def ventanaMenu():
     sim.config(font = ("Courier", 20))
     sim.pack(pady = 10)
 
-    vitacora = tk.Button(menu, text = "Vitacora", command = "")
-    vitacora.config(font = ("Courier", 20))
-    vitacora.pack(pady = 10)
+    bitacora = tk.Button(menu, text = "Bitacora", command = listFile)
+    bitacora.config(font = ("Courier", 20))
+    bitacora.pack(pady = 10)
     
 ventanaMenu()
