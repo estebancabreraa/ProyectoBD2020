@@ -81,7 +81,7 @@ def ventanaModArtista(nombreArtista):
         campo = campo2.get("1.0",'end-1c')
         emailV = emailEd.get("1.0",'end-1c')
 
-        modificarArtista(idArtista, campo, emailV)
+        modificarArtista(idArtista, nombre, campo, emailV)
 
     def eliminarArtista2():
         eliminarArtista(idArtista)
