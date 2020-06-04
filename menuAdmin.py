@@ -84,5 +84,5 @@ def ventanaMenu():
     bitacora.config(font = ("Courier", 20))
     bitacora.pack(pady = 10)
 
-ventanaMenu()
+
 
