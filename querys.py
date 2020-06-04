@@ -592,7 +592,7 @@ def buscarGenero(nombre):
 ################################################################################
 #                                     MODIFICAR                                #
 ################################################################################
-def modificarArtista(idd, nombre):
+def modificarArtista(idd, nombre, campo, email):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -601,9 +601,9 @@ def modificarArtista(idd, nombre):
                                       database = "proyecto2")
         cursor = connection.cursor()
         
-        create_table_query = '''UPDATE artist SET name =%s WHERE artistid=%s;'''
+        create_table_query = '''UPDATE artist SET name =%s, modified_by=%s, modified_field=%s WHERE artistid=%s;'''
         
-        cursor.execute(create_table_query, (nombre, idd,))            
+        cursor.execute(create_table_query, (nombre,  email, campo, idd,))            
         
         connection.commit()
         
@@ -621,7 +621,7 @@ def modificarArtista(idd, nombre):
                 connection.close()
                 print("PostgreSQL connection is closed")
 
-def modificarAlbum(idd, nombre):
+def modificarAlbum(idd, nombre, campo, email):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -630,9 +630,9 @@ def modificarAlbum(idd, nombre):
                                       database = "proyecto2")
         cursor = connection.cursor()
         
-        create_table_query = '''UPDATE album SET title =%s WHERE albumid=%s;'''
+        create_table_query = '''UPDATE album SET title =%s, modified_by=%s, modified_field=%s WHERE albumid=%s;'''
         
-        cursor.execute(create_table_query, (nombre, idd,))            
+        cursor.execute(create_table_query, (nombre, email, campo, idd,))            
         
         connection.commit()
         
@@ -651,7 +651,7 @@ def modificarAlbum(idd, nombre):
                 print("PostgreSQL connection is closed")
 
 
-def modificarCancion(idd, nombre, precio):
+def modificarCancion(idd, nombre, precio, campo, email):
     try:
         connection = psycopg2.connect(user = "postgres",
                                       password = "123456",
@@ -660,9 +660,9 @@ def modificarCancion(idd, nombre, precio):
                                       database = "proyecto2")
         cursor = connection.cursor()
         
-        create_table_query = '''UPDATE track SET name =%s, unitprice=%s WHERE trackid=%s;'''
+        create_table_query = '''UPDATE track SET name =%s, unitprice=%s,  modified_by=%s, modified_field=%s WHERE trackid=%s;'''
         
-        cursor.execute(create_table_query, (nombre, precio, idd,))            
+        cursor.execute(create_table_query, (nombre, precio, , email, campo, idd,))            
         
         connection.commit()
         

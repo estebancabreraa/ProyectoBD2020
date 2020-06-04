@@ -167,8 +167,10 @@ def ventanaModCancion(tituloCancion):
         genero = generoEdit.get("1.0",'end-1c')
         duracion = duracionEdit.get("1.0",'end-1c')
         precio = precioEdit.get("1.0",'end-1c')
+        campo = campo2.get("1.0",'end-1c')
+        emailV = emailEd.get("1.0",'end-1c')
         
-        modificarCancion(idCancion, titulo, precio)
+        modificarCancion(idCancion, titulo, precio, campo, emailV)
         
     def eliminarCancion1():
         eliminarCancion(idCancion)

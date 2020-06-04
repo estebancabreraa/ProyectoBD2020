@@ -78,11 +78,13 @@ def ventanaModArtista(nombreArtista):
     def modificarArtista2():
         idArtista = idEdit.get("1.0",'end-1c')
         nombreArtista = nombreEdit.get("1.0",'end-1c')
+        campo = campo2.get("1.0",'end-1c')
+        emailV = emailEd.get("1.0",'end-1c')
 
-        modificarArtista(idArtista, )
+        modificarArtista(idArtista, campo, emailV)
 
     def eliminarArtista2():
-        eliminarArtista(idArtista, )
+        eliminarArtista(idArtista)
 
     #BOTONES
     registrarborrarFrame = tk.Frame(registroArtista, bg="LightGreen")

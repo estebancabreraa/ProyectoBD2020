@@ -79,8 +79,10 @@ def ventanaModAlbum(tituloAlbum):
     def modificarAlbum2():
         idAlbum = idEdit.get("1.0",'end-1c')
         titulo = tituloEdit.get("1.0",'end-1c')
-
-        modificarAlbum(idAlbum, titulo)
+        campo = campo2.get("1.0",'end-1c')
+        emailV = emailEd.get("1.0",'end-1c')
+        
+        modificarAlbum(idAlbum, titulo, campo, emailV)
 
     def eliminarAlbum2():
          eliminarAlbum(idAlbum)
