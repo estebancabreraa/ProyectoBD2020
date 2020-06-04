@@ -25,14 +25,7 @@ def ventanaRecomendacion():
     label5 = tk.Label(cancionFr, text="Genero:", font=("Courier", 13), bg="LightGreen", fg="black")
     label5.pack(side=tk.LEFT, ipady = 7)
 
-    combobox2 = ttk.Combobox(cancionFr, width=10, values = [20, 17, 15, 13, 10, 7, 5, 1], state = "readonly")
-    combobox2.pack(side = tk.LEFT)
-    combobox2.current(0)
-
-    label5 = tk.Label(cancionFr, text="Cantidad:", font=("Courier", 13), bg="LightGreen", fg="black")
-    label5.pack(side=tk.LEFT, ipady = 7)
-    
-    combobox2 = ttk.Combobox(cancionFr, width=10, values = [20, 17, 15, 13, 10, 7, 5, 1], state = "readonly")
+    combobox2 = ttk.Combobox(cancionFr, width=10, values = [""], state = "readonly")
     combobox2.pack(side = tk.LEFT)
     combobox2.current(0)
     
@@ -41,11 +34,14 @@ def ventanaRecomendacion():
     label5 = tk.Label(venMain, text="  ", font=("Courier", 13), bg="LightGreen", fg="black")
     label5.pack()
 
-    regArtista = tk.Button(venMain, text="Descubrir", command=ventanaRegArtista)
+    def rec():
+        genero = combobox.current()
+
+        recomendacion(genero)
+
+    regArtista = tk.Button(venMain, text="Descubrir", command="")
     regArtista.config(font=("Courier", 20))
     regArtista.pack()
-    
 
     venMain.mainloop()
-
 ventanaRecomendacion()

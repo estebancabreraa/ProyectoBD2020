@@ -160,4 +160,3 @@ def ventanaRecords():
     label6.pack(side=tk.TOP)
 
     records.mainloop()
-ventanaRecords()
