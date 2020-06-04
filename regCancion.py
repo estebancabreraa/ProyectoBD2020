@@ -93,6 +93,28 @@ def ventanaRegCancion():
 
     precioFrame.pack(side=tk.TOP, anchor=tk.NW)
 
+    #Campo
+    Campo = tk.Frame(registroCancion)
+    
+    campo1 = tk.Label(Campo, text="Campo:", bg="LightGreen", fg="black")
+    campo1.config(font=("Courier", 12))
+    campo1.pack(side=tk.LEFT)
+
+    campo2 = tk.Text(Campo, width=30, height=1)
+    campo2.pack(side=tk.LEFT)
+    Campo.pack(side=tk.TOP, anchor=tk.NW)
+
+    #NOMBRE
+    emailF = tk.Frame(registroCancion)
+    
+    email = tk.Label(emailF, text="Email:", bg="LightGreen", fg="black")
+    email.config(font=("Courier", 12))
+    email.pack(side=tk.LEFT)
+
+    emailEd = tk.Text(emailF, width=30, height=1)
+    emailEd.pack(side=tk.LEFT)
+    emailF.pack(side=tk.TOP, anchor=tk.NW)
+
     #e.bind("<Tab>", focus_next_widget)
     def borrarCampos3():
         idEdit.delete('1.0', 'end-1c')

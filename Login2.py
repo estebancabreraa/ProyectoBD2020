@@ -17,7 +17,7 @@ def Login():
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
 
         create_table_query = '''SELECT * FROM Customer WHERE Email=%s;'''
@@ -56,7 +56,7 @@ def Login():
                                           password = "123456",
                                           host = "127.0.0.1",
                                           port = "5433",
-                                          database = "proyecto1")
+                                          database = "proyecto2")
             cursor = connection.cursor()
 
             create_table_query = '''SELECT * FROM employee WHERE Email=%s;'''
@@ -99,7 +99,7 @@ def crearUsuario(customerid, firstname, lastname, company, address, city, state,
                                       password = "123456",
                                       host = "127.0.0.1",
                                       port = "5433",
-                                      database = "proyecto1")
+                                      database = "proyecto2")
         cursor = connection.cursor()
 
         create_table_query = '''INSERT INTO Customer(customerid, firstname, lastname, company, address, city, state, country, postalcode, phone, fax, email, supportrepid, password) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'''

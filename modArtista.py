@@ -53,14 +53,36 @@ def ventanaModArtista(nombreArtista):
     
     nombreArtistaFrame.pack(side=tk.TOP, anchor=tk.NW)
 
+    #Campo
+    Campo = tk.Frame(registroArtista)
+    
+    campo1 = tk.Label(Campo, text="Campo:", bg="LightGreen", fg="black")
+    campo1.config(font=("Courier", 12))
+    campo1.pack(side=tk.LEFT)
+
+    campo2 = tk.Text(Campo, width=30, height=1)
+    campo2.pack(side=tk.LEFT)
+    Campo.pack(side=tk.TOP, anchor=tk.NW)
+
+    #NOMBRE
+    emailF = tk.Frame(registroArtista)
+    
+    email = tk.Label(emailF, text="Email:", bg="LightGreen", fg="black")
+    email.config(font=("Courier", 12))
+    email.pack(side=tk.LEFT)
+
+    emailEd = tk.Text(emailF, width=30, height=1)
+    emailEd.pack(side=tk.LEFT)
+    emailF.pack(side=tk.TOP, anchor=tk.NW)    
+
     def modificarArtista2():
         idArtista = idEdit.get("1.0",'end-1c')
         nombreArtista = nombreEdit.get("1.0",'end-1c')
 
-        modificarArtista(idArtista, nombreArtista)
+        modificarArtista(idArtista, )
 
     def eliminarArtista2():
-        eliminarArtista(idArtista, nombreArtista)
+        eliminarArtista(idArtista, )
 
     #BOTONES
     registrarborrarFrame = tk.Frame(registroArtista, bg="LightGreen")
@@ -74,5 +96,4 @@ def ventanaModArtista(nombreArtista):
     button2.pack(side=tk.LEFT, padx=20, pady=10, ipadx=8)
     
     registrarborrarFrame.pack(side=tk.TOP, anchor=tk.NW)
-
 
